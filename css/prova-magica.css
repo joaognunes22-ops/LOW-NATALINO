@@ -16,3 +16,16 @@
 .pm-badge span{border:1px solid rgba(237,201,148,.45);border-radius:999px;padding:7px 14px;font-size:13px;color:#edc994}
 .pm-cta{text-align:center;margin-top:30px}
 @media (max-width:760px){.pm{padding:56px 16px 60px}.pm-steps{grid-template-columns:1fr}.pm-mock{border-radius:10px}}
+/* Bloco do celular dentro da seção Prova Mágica */
+.pm-phone{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:36px;align-items:center;max-width:900px;margin:44px auto 0}
+.pm-phone img{width:100%;height:auto;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.pm-phone h3{color:#fff;font-size:26px;line-height:1.2;margin:.3em 0 .5em}
+.pm-phone h3 em{color:#edc994}
+.pm-phone p{color:#cbd8dc;margin:0 0 12px;line-height:1.55}
+.pm-phone ul{margin:0;padding:0;list-style:none}
+.pm-phone li{color:#f8f3e9;margin:8px 0;padding-left:26px;position:relative}
+.pm-phone li::before{content:"✦";position:absolute;left:0;color:#edc994}
+@media (max-width:760px){.pm-phone{grid-template-columns:1fr;gap:22px;margin-top:34px}.pm-phone img{max-width:300px;margin:0 auto;display:block}}
+/* Mockups nas seções do kit e da oferta */
+.pm-shot{display:block;width:100%;max-width:960px;height:auto;margin:26px auto 30px;border-radius:14px;box-shadow:0 22px 50px rgba(20,12,4,.28)}
+.notebook-preview .pm-shot{margin:18px auto 6px;max-width:100%}
