@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Livro da Lista dos Bonzinhos · Polo Norte</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#04121a">
+<link rel="preload" as="image" href="images/lista-fundo.webp">
+<link rel="stylesheet" href="css/kit-fonts.css">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;background:#04121a;color:#f8f3e9;font-family:"Segoe UI",system-ui,-apple-system,sans-serif}
+  body{height:100vh;height:100dvh;overflow:hidden;position:relative}
+  /* cena com a proporção da imagem, sempre cobrindo a tela inteira */
+  .scene{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:max(100vw,calc(100dvh * 941 / 1672));height:max(100dvh,calc(100vw * 1672 / 941));max-width:none;background:url(images/lista-fundo.webp) center/100% 100% no-repeat;overflow:hidden;--u:min(1vw,calc(100dvh * 941 / 1672 / 100))}
+  @media (min-aspect-ratio:941/1672){.scene{width:calc(100dvh * 941 / 1672);height:100dvh;background-color:#04121a}}
+  .top{position:absolute;left:12%;right:12%;top:4.5%;text-align:center}
+  .kicker{font-family:Cinzel,serif;font-weight:700;font-size:clamp(11px,3vw,14px);letter-spacing:.22em;color:#edc994;margin:0}
+  .title{font-family:Cinzel,serif;font-weight:700;font-size:clamp(22px,6.6vw,32px);line-height:1.15;margin:.35em 0 0;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+  .status{font-size:clamp(13px,3.6vw,16px);margin:.9em auto 0;max-width:30em;color:#d9e6ea;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+  .dots::after{content:'';animation:dots 1.2s steps(4) infinite}
+  @keyframes dots{0%{content:''}25%{content:'.'}50%{content:'..'}75%{content:'...'}}
+  /* páginas do livro (coordenadas relativas à imagem 941x1672) */
+  .page{position:absolute;top:56%;height:20.5%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#3a2412;opacity:0;transition:opacity 1.2s ease,transform 1.2s ease;transform:translateY(8px)}
+  .page.left{left:15%;width:33%}
+  .page.right{left:51.5%;width:33%}
+  .show .page{opacity:1;transform:none}
+  .show .page.right{transition-delay:.7s}
+  .label{font-family:Cinzel,serif;font-weight:700;font-size:clamp(8px,2.2vw,11px);letter-spacing:.12em;color:#a3302a;margin:0}
+  .name{font-family:"Dancing Script",cursive;font-weight:700;font-size:clamp(26px,8.5vw,42px);line-height:1;margin:.15em 0;color:#7a4a0c;word-break:break-word}
+  .small{font-family:"Dancing Script",cursive;font-size:clamp(13px,3.7vw,18px);line-height:1.15;margin:.2em 0 0}
+  .ok{display:inline-flex;align-items:center;gap:.3em;font-family:Cinzel,serif;font-weight:700;font-size:clamp(10px,2.8vw,13px);color:#1f7a3f;margin:0 0 .3em}
+  .ok svg{width:1.4em;height:1.4em;flex:none}
+  .reg{font-family:Cinzel,serif;font-size:clamp(7px,2vw,10px);letter-spacing:.06em;color:#6b4a2a;margin:.5em 0 0}
+  .seal{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%) scale(.6);opacity:0;transition:all .8s cubic-bezier(.2,1.6,.4,1) 1.6s}
+  .show .seal{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  .seal-inner{background:rgba(4,18,26,.72);border:1px solid rgba(237,201,148,.55);border-radius:999px;padding:.5em .9em;font-family:Cinzel,serif;font-weight:700;font-size:clamp(10px,2.9vw,14px);color:#edc994;text-align:center;white-space:nowrap;box-shadow:0 0 24px rgba(237,201,148,.35)}
+  .sparkles{position:absolute;inset:0;pointer-events:none}
+  .sparkles i{position:absolute;width:4px;height:4px;border-radius:50%;background:#ffe9b0;box-shadow:0 0 8px 2px rgba(255,220,140,.8);opacity:0;animation:tw 2.4s ease-in-out infinite}
+  @keyframes tw{0%,100%{opacity:0;transform:scale(.4)}50%{opacity:1;transform:scale(1)}}
+  .notfound .page,.notfound .seal{display:none}
+  @media (prefers-reduced-motion:reduce){.page,.seal{transition:none}.sparkles i,.dots::after{animation:none}}
+</style>
+</head>
+<body>
+<main class="scene" id="scene">
+  <div class="sparkles" id="sparkles" aria-hidden="true"></div>
+  <header class="top">
+    <p class="kicker">CORREIO DO POLO NORTE</p>
+    <h1 class="title">Livro da Lista<br>dos Bonzinhos</h1>
+    <p class="status" id="status" role="status"><span class="dots">Procurando o seu nome no livro do Papai Noel</span></p>
+  </header>
+  <div class="seal" aria-hidden="true"><div class="seal-inner">✦ Registro encontrado ✦</div></div>
+  <section class="page left" aria-label="Nome registrado">
+    <p class="label">Nome registrado</p>
+    <p class="name" id="name"></p>
+    <p class="small">Natal de <span id="year"></span></p>
+  </section>
+  <section class="page right" aria-label="Situação">
+    <p class="ok"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#1f7a3f"/><path d="M6.5 12.5l3.5 3.5 7.5-8" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>CONFIRMADO</p>
+    <p class="small" id="deed"></p>
+    <p class="reg" id="reg"></p>
+  </section>
+</main>
+<script src="js/kit-magico.js"></script>
+<script>
+(function () {
+  var sp = document.getElementById('sparkles');
+  for (var i = 0; i < 26; i++) {
+    var s = document.createElement('i');
+    s.style.left = (Math.random() * 100) + '%'; s.style.top = (Math.random() * 60) + '%';
+    s.style.animationDelay = (Math.random() * 2.4) + 's'; sp.appendChild(s);
+  }
+  var d = KitMagico.lerLista(location.hash), scene = document.getElementById('scene'), st = document.getElementById('status');
+  if (!d) {
+    scene.classList.add('notfound');
+    st.textContent = 'Não encontramos este registro. Escaneie novamente o código dourado do certificado.';
+    return;
+  }
+  document.getElementById('name').textContent = d.n;
+  document.getElementById('year').textContent = d.y || KitMagico.ANO;
+  document.getElementById('deed').textContent = 'Está na lista porque ' + d.d + '.';
+  document.getElementById('reg').textContent = 'Registro nº ' + (d.r || '');
+  document.title = d.n + ' está na Lista dos Bonzinhos!';
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  setTimeout(function () {
+    st.textContent = 'O Papai Noel confirmou: ' + d.n + ' está na Lista dos Bonzinhos!';
+    scene.classList.add('show');
+  }, reduce ? 0 : 2200);
+})();
+</script>
+</body>
+</html>

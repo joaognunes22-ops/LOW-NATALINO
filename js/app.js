@@ -290,11 +290,11 @@
       var phoneLabel=document.createElement('label'); phoneLabel.htmlFor='checkout-phone'; phoneLabel.textContent='Celular do responsável (com DDD)';
       var phone=document.createElement('input'); phone.id='checkout-phone'; phone.type='tel'; phone.inputMode='tel'; phone.autocomplete='tel-national'; phone.required=true; phone.maxLength=15; phone.placeholder='(31) 99999-9999'; phone.pattern='\\([0-9]{2}\\) [0-9]{5}-[0-9]{4}';
       phone.addEventListener('input',function(){var d=phone.value.replace(/\D/g,'').slice(0,11);phone.value=d.length>7?'('+d.slice(0,2)+') '+d.slice(2,7)+'-'+d.slice(7):d.length>2?'('+d.slice(0,2)+') '+d.slice(2):d.length?'('+d:'';});
-      var phoneHint=document.createElement('p'); phoneHint.className='small'; phoneHint.textContent='Informe seu número com DDD para contato sobre o pedido. Após o pagamento, você envia os dados da criança pelo WhatsApp com um toque e recebe a carta personalizada.';
+      var phoneHint=document.createElement('p'); phoneHint.className='small'; phoneHint.textContent='Informe seu número com DDD para contato sobre o pedido. Após o pagamento, você baixa na hora a carta e o certificado com o código mágico.';
       st.append(phoneLabel,phone,phoneHint);
       var legal=document.createElement('p'); legal.className='small'; legal.innerHTML='Ao continuar, consulte a <a href="/privacidade">Privacidade</a> e os <a href="/termos">Termos de Uso</a>.';st.append(legal);
       btn.textContent = 'Continuar para o pagamento →';
-      msg.textContent = 'Kit ' + money(totalCents()) + '. Confira o valor final na Cakto. Após o pagamento, a Cakto envia os PDFs do kit para o seu e-mail e você confirma os dados da carta pelo WhatsApp (pronta em até 24 horas).';
+      msg.textContent = 'Kit ' + money(totalCents()) + '. Confira o valor final na Cakto. Após o pagamento, você volta ao site e baixa na hora a Prova Mágica com estes dados. O caderno chega pela Cakto, no seu e-mail.';
       btn.addEventListener('click', async function () {
         if (!email.reportValidity() || !phone.reportValidity()) return;
         btn.disabled = true;
@@ -303,7 +303,7 @@
         try {
           var order = await NM.config.createCheckout();
           // Guarda os dados da criança neste navegador para a página de obrigado (obrigado.html)
-          // montar a mensagem de WhatsApp depois do pagamento.
+          // gerar a Prova Mágica (carta, certificado e bilhetes) automaticamente depois do pagamento.
           try { localStorage.setItem('natal-magico-pedido', JSON.stringify({child:name, age:F.age.value, deed:F.deed.value.trim(), likes:F.likes.value.trim(), note:fam, email:email.value.trim(), phone:phone.value, extra:F.extra.checked, at:Date.now()})); } catch (_) {}
           window.location.href = order.checkoutUrl;
         } catch (err) {

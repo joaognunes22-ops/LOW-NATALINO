@@ -1,88 +1,57 @@
-/* Página de obrigado: envia os dados da criança para o WhatsApp da loja.
-   CONFIGURE AQUI o número que vai receber os pedidos:
-   formato internacional, só números (55 + DDD + número). Ex.: '5531999999999' */
-var WHATSAPP_NUMERO = '';
-
+/* Página de obrigado: gera automaticamente a Prova Mágica (carta, certificado com QR Code
+   e bilhetes da rena) com os dados que o cliente preencheu no site antes do pagamento. */
 (function () {
   'use strict';
   var KEY = 'natal-magico-pedido';
   var $ = function (id) { return document.getElementById(id); };
-  var data = null;
+  var data = null, pages = null;
   try { data = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (_) { data = null; }
 
-  var form = $('ob-form'), box = $('ob-summary-box'), wa = $('ob-wa'), err = $('ob-error');
-  var fields = { child: $('f-child'), age: $('f-age'), deed: $('f-deed'), likes: $('f-likes'), note: $('f-note'), buyer: $('f-buyer'), email: $('f-email') };
+  var form = $('ob-form'), ready = $('ob-ready'), err = $('ob-error'), dl = $('ob-download');
+  var fields = { child: $('f-child'), deed: $('f-deed'), likes: $('f-likes'), note: $('f-note') };
 
-  function complete(d) { return d && d.child && d.age && d.deed && d.likes; }
+  function complete(d) { return d && d.child && d.deed && d.likes; }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (_) {} }
+  function fillForm() { Object.keys(fields).forEach(function (k) { fields[k].value = (data && data[k]) || ''; }); }
 
-  function fromForm() {
-    return {
-      child: fields.child.value.trim(), age: fields.age.value.trim(), deed: fields.deed.value.trim(),
-      likes: fields.likes.value.trim(), note: fields.note.value.trim(), buyer: fields.buyer.value.trim(),
-      email: fields.email.value.trim(), phone: data && data.phone || '', extra: data && data.extra || false
-    };
-  }
-
-  function fillForm(d) {
-    Object.keys(fields).forEach(function (k) { if (d && d[k] != null) fields[k].value = d[k]; });
-  }
-
-  function showSummary(d) {
-    var dl = $('ob-summary'); dl.replaceChildren();
-    [['Criança', d.child], ['Idade', d.age + ' anos'], ['Boa ação', d.deed], ['Gosta de', d.likes], ['Recado da família', d.note], ['E-mail da compra', d.email]]
-      .forEach(function (r) {
-        if (!r[1]) return;
-        var dt = document.createElement('dt'), dd = document.createElement('dd');
-        dt.textContent = r[0]; dd.textContent = r[1]; dl.append(dt, dd);
+  async function build() {
+    form.hidden = true; ready.hidden = false;
+    dl.disabled = true; dl.textContent = 'Preparando a magia…';
+    if (!data.registro) { data.registro = KitMagico.registro(); save(); }
+    try {
+      pages = await KitMagico.gerar(data);
+      var pv = $('ob-preview'); pv.replaceChildren();
+      [['carta', 'Carta do Papai Noel'], ['certificado', 'Certificado com código mágico'], ['bilhetes', 'Bilhetes da rena']].forEach(function (p) {
+        var src = pages[p[0]], t = document.createElement('canvas'), w = 600;
+        t.width = w; t.height = Math.round(src.height * w / src.width);
+        t.getContext('2d').drawImage(src, 0, 0, t.width, t.height);
+        var img = new Image(); img.alt = p[1]; img.src = t.toDataURL('image/jpeg', 0.8);
+        pv.append(img);
       });
-    box.hidden = false; form.hidden = true;
-  }
-
-  function message(d) {
-    var lines = [
-      'Olá! Acabei de comprar o kit Natal Mágico 🎅',
-      'Seguem os dados para a carta do Papai Noel:',
-      '',
-      '• Nome da criança: ' + d.child,
-      '• Idade: ' + d.age,
-      '• Boa ação: ' + d.deed,
-      '• Gosta de: ' + d.likes
-    ];
-    if (d.note) lines.push('• Recado da família: ' + d.note);
-    lines.push('');
-    if (d.buyer) lines.push('Comprador(a): ' + d.buyer);
-    if (d.email) lines.push('E-mail da compra: ' + d.email);
-    if (d.phone) lines.push('Celular: ' + d.phone);
-    if (d.extra) lines.push('Escolhi o adicional de foto: vou enviar a foto aqui.');
-    return lines.join('\n');
-  }
-
-  function link(d) {
-    return 'https://wa.me/' + WHATSAPP_NUMERO.replace(/\D/g, '') + '?text=' + encodeURIComponent(message(d));
-  }
-
-  if (complete(data)) { fillForm(data); showSummary(data); }
-  else { fillForm(data); form.hidden = false; }
-
-  $('ob-edit').addEventListener('click', function () { fillForm(data); box.hidden = true; form.hidden = false; fields.child.focus(); });
-
-  wa.addEventListener('click', function (e) {
-    var d = form.hidden ? data : fromForm();
-    if (!form.hidden) {
-      if (!complete(d) || !fields.email.checkValidity()) {
-        e.preventDefault(); err.hidden = false;
-        var first = ['child', 'age', 'deed', 'likes', 'email'].filter(function (k) { return !fields[k].value.trim() || !fields[k].checkValidity(); })[0];
-        if (first) fields[first].focus();
-        return;
-      }
-      err.hidden = true; data = d;
-      try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (_) {}
+      $('ob-lista').href = KitMagico.listaUrl(data);
+      dl.disabled = false; dl.textContent = 'Baixar meu kit mágico (PDF)';
+    } catch (e) {
+      dl.disabled = false; dl.textContent = 'Tentar novamente';
+      console.error(e);
     }
-    if (!WHATSAPP_NUMERO.replace(/\D/g, '')) {
-      e.preventDefault();
-      alert('Número de WhatsApp ainda não configurado na página.');
-      return;
-    }
-    wa.href = link(d);
+  }
+
+  dl.addEventListener('click', function () {
+    if (!pages) { build(); return; }
+    try { KitMagico.pdf(pages, data); } catch (e) { console.error(e); alert('Não foi possível gerar o PDF. Tente novamente.'); }
   });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var d = { child: fields.child.value.trim(), deed: fields.deed.value.trim(), likes: fields.likes.value.trim(), note: fields.note.value.trim() };
+    if (!complete(d)) { err.hidden = false; return; }
+    err.hidden = true;
+    data = Object.assign({}, data || {}, d);
+    save(); pages = null; build();
+  });
+
+  $('ob-edit').addEventListener('click', function () { fillForm(); ready.hidden = true; form.hidden = false; fields.child.focus(); });
+
+  function start() { if (complete(data)) build(); else { fillForm(); form.hidden = false; } }
+  start();
 })();

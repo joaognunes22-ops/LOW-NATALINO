@@ -1,0 +1,18 @@
+/* Seção "Como funciona a Prova Mágica" */
+.pm{background:radial-gradient(ellipse at 50% 0%,#173c4b 0%,#071c26 65%);color:#f8f3e9;padding:72px 16px 80px;position:relative;overflow:hidden}
+.pm-in{max-width:1080px;margin:0 auto}
+.pm-head{text-align:center;max-width:680px;margin:0 auto 34px}
+.pm-head .eyebrow{color:#edc994}
+.pm-head h2{color:#fff;margin:.3em 0 .4em}
+.pm-head h2 em{color:#edc994}
+.pm-head p{color:#d4e0e4;margin:0}
+.pm-mock{display:block;width:100%;max-width:900px;height:auto;margin:0 auto 34px;border-radius:14px;box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 0 1px rgba(237,201,148,.25)}
+.pm-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;list-style:none;margin:0;padding:0}
+.pm-steps li{background:rgba(248,243,233,.06);border:1px solid rgba(237,201,148,.28);border-radius:12px;padding:22px 20px}
+.pm-num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:#edc994;color:#14222b;font-weight:800;margin-bottom:10px}
+.pm-steps h3{color:#fff;font-size:19px;margin:0 0 6px}
+.pm-steps p{color:#cbd8dc;margin:0;font-size:15px;line-height:1.5}
+.pm-badge{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:28px 0 0}
+.pm-badge span{border:1px solid rgba(237,201,148,.45);border-radius:999px;padding:7px 14px;font-size:13px;color:#edc994}
+.pm-cta{text-align:center;margin-top:30px}
+@media (max-width:760px){.pm{padding:56px 16px 60px}.pm-steps{grid-template-columns:1fr}.pm-mock{border-radius:10px}}
