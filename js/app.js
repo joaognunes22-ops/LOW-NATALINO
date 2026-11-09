@@ -16,8 +16,11 @@
   // LINK DE CHECKOUT: cole aqui o seu link de pagamento (ex.: 'https://...').
   // Enquanto estiver vazio, o botão de pagamento mostra uma mensagem de aviso.
   NM.config.checkoutUrl = NM.config.checkoutUrl || 'https://pay.cakto.com.br/sep2jqf_1273980';
-  NM.config.createCheckout = async function () {
-    var url = NM.config.checkoutUrl;
+  // LINK DO KIT COM FOTO (R$ 29,90): crie uma segunda oferta na Cakto e cole o link aqui.
+  // Página de obrigado dessa oferta: https://SEU-SITE/obrigado.html?foto=1
+  NM.config.checkoutUrlFoto = NM.config.checkoutUrlFoto || '';
+  NM.config.createCheckout = async function (comFoto) {
+    var url = comFoto ? NM.config.checkoutUrlFoto : NM.config.checkoutUrl;
     var checkout;
     try { checkout = new URL(url); } catch (_) { throw new Error('Link de pagamento ainda não configurado.'); }
     if (checkout.protocol !== 'https:') throw new Error('Link de pagamento ainda não configurado.');
@@ -294,17 +297,18 @@
       st.append(phoneLabel,phone,phoneHint);
       var legal=document.createElement('p'); legal.className='small'; legal.innerHTML='Ao continuar, consulte a <a href="/privacidade">Privacidade</a> e os <a href="/termos">Termos de Uso</a>.';st.append(legal);
       btn.textContent = 'Continuar para o pagamento →';
-      msg.textContent = 'Kit ' + money(totalCents()) + '. Confira o valor final na Cakto. Após o pagamento, você volta ao site e baixa na hora a Prova Mágica com estes dados. O caderno chega pela Cakto, no seu e-mail.';
+      msg.textContent = 'Confira o valor final na Cakto. Após o pagamento, você volta ao site e baixa na hora a Prova Mágica com estes dados. O caderno chega pela Cakto, no seu e-mail.';
       btn.addEventListener('click', async function () {
         if (!email.reportValidity() || !phone.reportValidity()) return;
         btn.disabled = true;
         NM.track('checkout_start', { plan: getPlan(), addon: F.extra.checked, value: totalCents() === null ? null : totalCents() / 100 });
         /* Os dados da criança seguem só para a integração de pagamento, nunca para os eventos. */
         try {
-          var order = await NM.config.createCheckout();
+          var comFoto = !!(document.getElementById('nm-photo-preview') || {}).checked;
+          var order = await NM.config.createCheckout(comFoto);
           // Guarda os dados da criança neste navegador para a página de obrigado (obrigado.html)
           // gerar a Prova Mágica (carta, certificado e bilhetes) automaticamente depois do pagamento.
-          try { localStorage.setItem('natal-magico-pedido', JSON.stringify({child:name, age:F.age.value, deed:F.deed.value.trim(), likes:F.likes.value.trim(), note:fam, email:email.value.trim(), phone:phone.value, extra:F.extra.checked, at:Date.now()})); } catch (_) {}
+          try { localStorage.setItem('natal-magico-pedido', JSON.stringify({child:name, age:F.age.value, deed:F.deed.value.trim(), likes:F.likes.value.trim(), note:fam, email:email.value.trim(), phone:phone.value, foto:comFoto, at:Date.now()})); } catch (_) {}
           window.location.href = order.checkoutUrl;
         } catch (err) {
           msg.textContent = err instanceof Error ? err.message : 'Não foi possível iniciar o pagamento. Tente novamente.';

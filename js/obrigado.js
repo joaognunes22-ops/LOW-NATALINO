@@ -2,10 +2,23 @@
    e bilhetes da rena) com os dados que o cliente preencheu no site antes do pagamento. */
 (function () {
   'use strict';
-  var KEY = 'natal-magico-pedido';
+  var KEY = 'natal-magico-pedido', PHOTO_KEY = 'natal-magico-foto';
   var $ = function (id) { return document.getElementById(id); };
   var data = null, pages = null;
   try { data = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (_) { data = null; }
+  var photo = null;
+  try { photo = localStorage.getItem(PHOTO_KEY); } catch (_) {}
+  var comFoto = /[?&]foto=1/.test(location.search) || !!(data && data.foto);
+  if (comFoto) $('ob-photo').hidden = false;
+  $('f-photo').addEventListener('change', async function (e) {
+    var f = e.target.files && e.target.files[0], pe = $('ob-photo-error'); if (!f) return;
+    pe.hidden = true;
+    try {
+      photo = await KitMagico.prepararFoto(f);
+      try { localStorage.setItem(PHOTO_KEY, photo); } catch (_) {}
+      pages = null; if (complete(data)) build();
+    } catch (err) { pe.textContent = err.message; pe.hidden = false; }
+  });
 
   var form = $('ob-form'), ready = $('ob-ready'), err = $('ob-error'), dl = $('ob-download');
   var fields = { child: $('f-child'), deed: $('f-deed'), likes: $('f-likes'), note: $('f-note') };
@@ -19,7 +32,7 @@
     dl.disabled = true; dl.textContent = 'Preparando a magia…';
     if (!data.registro) { data.registro = KitMagico.registro(); save(); }
     try {
-      pages = await KitMagico.gerar(data);
+      pages = await KitMagico.gerar(Object.assign({}, data, { photo: comFoto ? photo : null }));
       var pv = $('ob-preview'); pv.replaceChildren();
       [['carta', 'Carta do Papai Noel'], ['certificado', 'Certificado com código mágico'], ['bilhetes', 'Bilhetes da rena']].forEach(function (p) {
         var src = pages[p[0]], t = document.createElement('canvas'), w = 600;

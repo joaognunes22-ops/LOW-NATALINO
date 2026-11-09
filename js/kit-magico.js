@@ -95,6 +95,20 @@
     else ctx.fillText(text, x, y);
   }
 
+  /* Foto da criança em moldura redonda dourada. */
+  function photoFrame(ctx, photo, cx, cy, r) {
+    ctx.save();
+    ctx.beginPath(); ctx.arc(cx, cy, r + 9, 0, Math.PI * 2);
+    var g = ctx.createLinearGradient(cx - r, cy - r, cx + r, cy + r);
+    g.addColorStop(0, '#f3dca4'); g.addColorStop(.5, '#b8862f'); g.addColorStop(1, '#f0d48f');
+    ctx.fillStyle = g; ctx.shadowColor = 'rgba(60,30,0,.35)'; ctx.shadowBlur = 14; ctx.fill();
+    ctx.shadowBlur = 0; ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.closePath(); ctx.clip();
+    var s = Math.min(photo.naturalWidth, photo.naturalHeight);
+    ctx.drawImage(photo, (photo.naturalWidth - s) / 2, (photo.naturalHeight - s) / 2, s, s, cx - r, cy - r, r * 2, r * 2);
+    ctx.restore();
+    ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.strokeStyle = '#fff7e2'; ctx.lineWidth = 2; ctx.stroke();
+  }
+
   function carta(img, d) {
     var k = canvasFor(img), ctx = k.ctx, deed = normDeed(d.deed), likes = normLikes(d.likes), note = clean(d.note);
     ctx.fillStyle = RED; ctx.font = '700 22px ' + TITLE; spaced(ctx, 'CORREIO DO POLO NORTE', 527, 245, 4);
@@ -108,7 +122,9 @@
     if (note) blocks.push({ text: 'Um recado de quem ama você: “' + note + '”', font: '400 {s} ' + HAND, size: 31, before: 14, color: RED });
     blocks.push({ text: 'Com um abraço bem quentinho,', font: '400 {s} ' + HAND, size: 33, before: 22 });
     blocks.push({ text: 'Papai Noel', font: '700 {s} ' + HAND, size: 50, before: 4, color: RED, wrap: false });
-    fitBlocks(ctx, blocks, 515, 290, 1090, 700);
+    var top = 290;
+    if (d.photoImg) { photoFrame(ctx, d.photoImg, 527, 370, 72); top = 450; blocks[0].before = 0; }
+    fitBlocks(ctx, blocks, 515, top, 1090, 700);
     return k.c;
   }
 
@@ -122,15 +138,16 @@
   }
 
   function certificado(img, d) {
-    var k = canvasFor(img), ctx = k.ctx, deed = normDeed(d.deed), cx = 800;
+    var k = canvasFor(img), ctx = k.ctx, deed = normDeed(d.deed), cx = 800, tw = 820;
     ctx.fillStyle = RED; ctx.font = '700 20px ' + TITLE; spaced(ctx, 'CORREIO DO POLO NORTE', cx, 232, 5);
+    if (d.photoImg) { photoFrame(ctx, d.photoImg, 440, 475, 92); cx = 890; tw = 640; }
     fitBlocks(ctx, [
       { text: 'Certificado Oficial', font: '700 {s} ' + TITLE, size: 50, color: INK, wrap: false, lh: 1.1 },
       { text: 'da Lista dos Bonzinhos', font: '700 {s} ' + TITLE, size: 34, color: INK, wrap: false, lh: 1.25 },
       { text: 'O Papai Noel confirma que', font: '400 {s} ' + HAND, size: 32, before: 12 },
       { text: d.child, font: '700 {s} ' + HAND, size: 92, color: GOLD, wrap: false, lh: 1.1, before: 6 },
       { text: 'está na Lista dos Bonzinhos do Natal de ' + ANO + ' porque ' + deed + '.', font: '400 {s} ' + HAND, size: 31, before: 8 }
-    ], cx, 245, 690, 820);
+    ], cx, 245, 690, tw);
     // assinatura e registro (canto inferior esquerdo, livre de enfeites)
     ctx.textAlign = 'center';
     ctx.fillStyle = RED; ctx.font = '700 44px ' + HAND; ctx.fillText('Papai Noel', 285, 800);
@@ -163,6 +180,7 @@
   async function gerar(d) {
     await fontsReady();
     var imgs = await Promise.all(['images/carta-fundo.webp', 'images/certificado-fundo.webp', 'images/bilhete-rena-fundo.webp'].map(loadImage));
+    d = Object.assign({}, d, { photoImg: d.photo ? await loadImage(d.photo).catch(function () { return null; }) : null });
     return { carta: carta(imgs[0], d), certificado: certificado(imgs[1], d), bilhetes: bilhetes(imgs[2], d) };
   }
 
@@ -178,5 +196,21 @@
     doc.save('Prova-Magica-' + nome + '.pdf');
   }
 
-  window.KitMagico = { gerar: gerar, pdf: pdf, registro: registro, listaUrl: listaUrl, lerLista: lerLista, normDeed: normDeed, firstUpper: firstUpper, ANO: ANO };
+  /* Recorta a foto escolhida em quadrado (levemente acima do centro, onde costuma estar o rosto). */
+  function prepararFoto(file) {
+    return new Promise(function (ok, fail) {
+      var url = URL.createObjectURL(file), i = new Image();
+      i.onload = function () {
+        var s = Math.min(i.naturalWidth, i.naturalHeight), sx = (i.naturalWidth - s) / 2;
+        var sy = Math.max(0, Math.min(i.naturalHeight - s, (i.naturalHeight - s) * 0.3));
+        var c = document.createElement('canvas'); c.width = c.height = 520;
+        c.getContext('2d').drawImage(i, sx, sy, s, s, 0, 0, 520, 520);
+        URL.revokeObjectURL(url); ok(c.toDataURL('image/jpeg', 0.85));
+      };
+      i.onerror = function () { URL.revokeObjectURL(url); fail(new Error('Não foi possível abrir esta foto.')); };
+      i.src = url;
+    });
+  }
+
+  window.KitMagico = { prepararFoto: prepararFoto, gerar: gerar, pdf: pdf, registro: registro, listaUrl: listaUrl, lerLista: lerLista, normDeed: normDeed, firstUpper: firstUpper, ANO: ANO };
 })();

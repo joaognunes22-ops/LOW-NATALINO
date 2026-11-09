@@ -34,6 +34,10 @@
   .ob-preview{display:grid;grid-template-columns:1fr 1.41fr;gap:10px;margin:18px 0 4px}
   .ob-preview img{width:100%;height:auto;border-radius:6px;box-shadow:0 6px 16px rgba(0,0,0,.18);background:#eee}
   .ob-preview img.wide{grid-column:1 / -1}
+  .ob-photo{margin:6px 0 18px;padding:16px;border:1px dashed #cdbf9f;border-radius:10px;background:#fff}
+  .ob-photo h2{margin-top:0}
+  .ob-file{position:relative;overflow:hidden}
+  .ob-file input{position:absolute;inset:0;opacity:0;cursor:pointer}
   .ob-small{font-size:13px;color:#5b6870;margin-top:14px}
   .ob-edit{background:none;border:0;color:#a3302a;text-decoration:underline;font:inherit;font-size:14px;cursor:pointer;padding:0;margin-top:10px}
   .ob-error{color:#a3302a;font-size:14px;margin-top:10px}
@@ -63,6 +67,13 @@
       <button type="submit" class="ob-btn gold">Criar a Prova Mágica</button>
     </form>
 
+    <div class="ob-photo" id="ob-photo" hidden>
+      <h2>Foto da criança</h2>
+      <p>Escolha uma foto nítida do rosto. Ela entra na carta e no certificado na hora e fica só no seu aparelho.</p>
+      <label class="ob-btn gold ob-file"><input type="file" id="f-photo" accept="image/*">Escolher foto</label>
+      <p class="ob-error" id="ob-photo-error" hidden></p>
+    </div>
+
     <div id="ob-ready" hidden>
       <div class="ob-preview" id="ob-preview" aria-label="Prévia do kit"></div>
       <button type="button" class="ob-btn" id="ob-download">Baixar meu kit mágico (PDF)</button>
@@ -75,6 +86,7 @@
         <li>Deixe a carta, o certificado e o bilhete da rena em um lugar especial, como embaixo da árvore.</li>
         <li>Quando a criança perguntar se é de verdade, aponte a câmera do celular para o código dourado do certificado. O nome dela aparece no Livro do Polo Norte!</li>
       </ol>
+      <p class="ob-small">Precisa de ajuda? Suporte somente pelo <a href="https://wa.me/5515997663247" target="_blank" rel="noopener">WhatsApp (15) 99766-3247</a>.</p>
       <p class="ob-small">Dica: guarde este PDF. Você pode baixar de novo por esta página, neste mesmo navegador.</p>
     </div>
   </section>
