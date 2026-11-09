@@ -15,7 +15,7 @@
   NM.config = NM.config || { checkoutEnabled: true, createCheckout: null, debug: /[?&]debug=1/.test(location.search) };
   // LINK DE CHECKOUT: cole aqui o seu link de pagamento (ex.: 'https://...').
   // Enquanto estiver vazio, o botão de pagamento mostra uma mensagem de aviso.
-  NM.config.checkoutUrl = NM.config.checkoutUrl || '';
+  NM.config.checkoutUrl = NM.config.checkoutUrl || 'https://pay.cakto.com.br/sep2jqf_1273980';
   NM.config.createCheckout = async function () {
     var url = NM.config.checkoutUrl;
     var checkout;
