@@ -332,6 +332,8 @@
   /* Trilha de Natal: inicia na interação e permanece sob controle do visitante. */
   var audioBtn = $('#audio'), music = new Audio('assets/trilha-natal.mp3');
   music.loop = true; music.preload = 'metadata'; music.volume = 0.32;
+  // Se o arquivo da trilha não existir, esconde o botão de som em vez de deixá-lo sem função.
+  music.addEventListener('error', function () { if (audioBtn) audioBtn.hidden = true; });
   music.setAttribute('playsinline', '');
   var on = false, userMuted = false, starting = false, touchStartY = null;
   function label() {
@@ -516,5 +518,5 @@ document.querySelectorAll('[data-suggest]').forEach(function(button){button.addE
   var photo=new Image();
   photo.onload=function(){if(photo.naturalWidth>0)section.classList.add('has-cinematic-photo');};
   photo.onerror=function(){section.classList.remove('has-cinematic-photo');};
-  photo.src='assets/papai-noel-presente-cinematico.webp';
+  photo.src='images/papai-noel-presente-cinematico.webp';
 })();
