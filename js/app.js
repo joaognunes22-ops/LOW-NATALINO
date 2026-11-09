@@ -295,7 +295,7 @@
       phone.addEventListener('input',function(){var d=phone.value.replace(/\D/g,'').slice(0,11);phone.value=d.length>7?'('+d.slice(0,2)+') '+d.slice(2,7)+'-'+d.slice(7):d.length>2?'('+d.slice(0,2)+') '+d.slice(2):d.length?'('+d:'';});
       var phoneHint=document.createElement('p'); phoneHint.className='small'; phoneHint.textContent='Informe seu número com DDD para contato sobre o pedido. Após o pagamento, você baixa na hora a carta e o certificado com o código mágico.';
       st.append(phoneLabel,phone,phoneHint);
-      var legal=document.createElement('p'); legal.className='small'; legal.innerHTML='Ao continuar, consulte a <a href="/privacidade">Privacidade</a> e os <a href="/termos">Termos de Uso</a>.';st.append(legal);
+      var legal=document.createElement('p'); legal.className='small'; legal.innerHTML='Ao continuar, consulte a <a href="privacidade.html">Privacidade</a> e os <a href="termos.html">Termos de Uso</a>.';st.append(legal);
       btn.textContent = 'Continuar para o pagamento →';
       msg.textContent = 'Confira o valor final na Cakto. Após o pagamento, você volta ao site e baixa na hora a Prova Mágica com estes dados. O caderno chega pela Cakto, no seu e-mail.';
       btn.addEventListener('click', async function () {
