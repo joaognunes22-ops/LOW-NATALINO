@@ -1,0 +1,135 @@
+/* Correções de QA visual — capturas reais de iPhone, 07/11/2026 */
+@media(max-width:700px){
+html,body{max-width:100%;overflow-x:clip}
+.nm-film-portal,.nm-film-portal-pin,.story-travel,.story-travel .story-frame,.nm-gift-reveal,.nm-gift-stage,.nm2-story,.nm2-pin{max-width:100%;overflow-x:clip}
+.story-travel .story-copy,.nm-film-portal-title,.nm-film-portal-next,.nm-gift-copy{box-sizing:border-box!important;width:100%!important;max-width:100%!important;left:0!important;right:0!important;padding-inline:clamp(22px,6vw,32px)!important;text-align:center!important}
+.story-travel .story-copy h2,.nm-film-portal-title h2,.nm-film-portal-next strong,.nm-gift-copy h2{max-width:100%;overflow-wrap:break-word;hyphens:auto;font-size:clamp(1.65rem,7.4vw,2.8rem)!important}
+.story-travel .story-copy p,.nm-film-portal-next p{max-width:100%;overflow-wrap:anywhere}
+.nm2-heading{top:clamp(104px,15svh,148px)!important;left:6%!important;right:6%!important}
+.nm2-heading h2{font-size:clamp(1.65rem,7vw,2.35rem)!important;line-height:1.16!important}
+.nm2-stage{margin-top:19svh}
+.nm2-book-base{background:#f5e6c8 url('../images/caderno-capa.webp') center/contain no-repeat!important}
+.nm2-book-cover,.nm2-book-page{min-width:0}
+.nm-mobile-cta{left:16px;right:16px;bottom:max(10px,env(safe-area-inset-bottom));padding:12px 16px!important;min-height:50px!important;font-size:.95rem;box-sizing:border-box}
+html.nm-hide-sticky .nm-mobile-cta{transform:translate3d(0,160%,0)!important;pointer-events:none!important}
+#personalizar{scroll-margin-top:100px}
+#pacotes .offer-card-paper{color:#fff5e8!important}
+#pacotes .offer-card-paper h3,#pacotes .offer-card-paper p,#pacotes .offer-card-paper li,#pacotes .offer-card-paper li strong,#pacotes .offer-card-paper li small,#pacotes .offer-card-paper .offer-benefits li div{color:#fff5e8!important;opacity:1!important}
+#pacotes .offer-card-paper .offer-price{background:#f7e7c8!important;border-color:#d7a86b!important}
+#pacotes .offer-card-paper .offer-price strong{color:#72301e!important;opacity:1!important;text-shadow:none!important}
+#pacotes .offer-card-paper .offer-price small,#pacotes .offer-card-paper .offer-price span,#pacotes .offer-card-paper .offer-price p{color:#613d2e!important;opacity:1!important}
+#pacotes .offer-card-paper .nm3-badge{color:#ffe4ae!important}
+#pacotes .offer-card-paper .offer-benefits li>span{color:#f8d393!important}
+}
+@media(prefers-reduced-motion:reduce){.nm2-book-cover,.nm2-book-page{transition:none!important}}
+
+/* FINAL MOBILE ART DIRECTION — cinematic physical parchment, no overlays or illegible CTAs */
+.nm2-pin{overflow:hidden!important}
+.nm2-heading{position:absolute!important;z-index:12!important;top:clamp(82px,11svh,125px)!important;left:50%!important;right:auto!important;transform:translateX(-50%)!important;width:min(92vw,760px)!important;max-width:none!important;padding:0 12px!important;pointer-events:none}
+.nm2-heading h2{font-size:clamp(1.65rem,4.4vw,3.1rem)!important;line-height:1.12!important;color:#fff1da!important;text-shadow:0 2px 15px #071421aa}
+.nm2-heading small{color:#eac58e!important}
+.nm2-stage{margin-top:clamp(170px,23svh,235px)!important;position:relative;z-index:7;transform-style:preserve-3d}
+.nm2-paper{border-radius:3px!important;box-shadow:0 2px 0 #e9d8b5,0 4px 0 #c5a57a,0 6px 0 #e8d6b1,0 24px 48px #0009!important}
+.nm2-letter{background:radial-gradient(ellipse at 20% 15%,#fff6df,#ead3a7 95%)!important;clip-path:polygon(0.5% 0,99.6% .5%,100% 98.9%,99.2% 100%,.3% 99.7%,0 1%)}
+.nm2-certificate{background:radial-gradient(ellipse at 25% 20%,#fff3d9,#e2c491 95%)!important}
+.nm2-letter:before,.nm2-certificate:before{inset:12px!important;border:2px double #ac855080!important}
+.nm2-book-base{background:#f5e6c8 url('../images/caderno-capa.webp') center/contain no-repeat!important}
+.nm2-book-cover,.nm2-book-page{backface-visibility:hidden!important;-webkit-backface-visibility:hidden!important;transform-style:preserve-3d}
+.nm2-book-page:after,.nm2-book-cover:after{backface-visibility:hidden!important;-webkit-backface-visibility:hidden!important}
+.nm2-cue{z-index:12!important;bottom:calc(72px + env(safe-area-inset-bottom))!important;white-space:nowrap}
+.nm-gift-reveal .gift-button,.nm-gift-reveal .gift-message{color:#fff5e6!important}
+.nm-gift-reveal a.btn,.nm-gift-reveal button.btn,.nm-gift-reveal .gift-button{background:#f0c98e!important;color:#273038!important;text-shadow:none!important;font-weight:700!important}
+.nm-gift-copy,.nm-gift-copy h2,.nm-gift-copy p{color:#fff1dd!important;text-shadow:0 2px 16px #071421a6}
+@media(max-width:700px){
+ .nm2-heading{top:clamp(92px,12svh,115px)!important;left:50%!important;right:auto!important;width:calc(100% - 36px)!important;padding:0!important}
+ .nm2-heading h2{font-size:clamp(1.5rem,5.9vw,2rem)!important;line-height:1.1!important;letter-spacing:-.025em!important}
+ .nm2-heading small{font-size:.64rem!important;letter-spacing:.13em!important}
+ .nm2-stage{width:min(78vw,330px)!important;height:min(40svh,360px)!important;margin-top:clamp(175px,26svh,240px)!important}
+ .nm2-paper{max-width:100%!important}
+ .nm2-letter,.nm2-certificate{gap:clamp(7px,1.2svh,13px)!important;padding:clamp(17px,4vw,25px)!important}
+ .nm2-paper strong{font-size:clamp(1.13rem,4.5vw,1.65rem)!important}
+ .nm2-paper p{font-size:clamp(.75rem,3.2vw,.9rem)!important;line-height:1.45!important}
+ .nm2-paper small{font-size:.55rem!important}
+ .nm2-seal{height:clamp(55px,8svh,80px)!important;width:clamp(55px,8svh,80px)!important}
+ .nm2-cue{bottom:calc(65px + env(safe-area-inset-bottom))!important;font-size:.64rem!important}
+ .nm2-book{max-width:100%}
+ .nm2-book-page,.nm2-book-cover{padding:0!important}
+ .nm-gift-reveal .gift-button,.nm-gift-reveal .gift-message{opacity:1!important}
+}
+@media(max-width:700px) and (max-height:680px){
+ .nm2-heading{top:82px!important}
+ .nm2-stage{height:35svh!important;margin-top:clamp(150px,25svh,180px)!important}
+ .nm2-cue{bottom:42px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .nm2-heading{position:relative!important;top:auto!important;left:auto!important;transform:none!important;margin:0 auto!important}
+ .nm2-stage{margin-top:40px!important}
+}
+.nm2-static .nm2-heading{position:relative!important;top:auto!important;left:auto!important;transform:none!important;margin:0 auto!important}
+.nm2-static .nm2-stage{margin-top:40px!important}
+
+/* iOS bugfix: real image spread instead of mirrored 3D page turns */
+.nm2-book-real{position:absolute!important;inset:0!important;display:grid!important;grid-template-columns:1fr 1fr!important;align-items:stretch!important;gap:0!important;overflow:visible!important;perspective:none!important;transform-style:flat!important;border-radius:3px;box-shadow:0 2px 0 #e2d3b6,0 4px 0 #b7a485,0 6px 0 #e5d6bc,0 28px 44px #0009;background:#f7eddc}
+.nm2-book-real-page{position:relative;min-width:0;min-height:0;overflow:hidden;background:#fffaf0}
+.nm2-book-real-left{border-radius:3px 0 0 3px;box-shadow:inset -6px 0 13px #715a3922}
+.nm2-book-real-right{border-radius:0 3px 3px 0;box-shadow:inset 6px 0 13px #715a3922}
+.nm2-book-real-page img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;transform:none!important;filter:none!important}
+.nm2-book-real-spine{position:absolute;left:50%;top:0;bottom:0;width:8px;transform:translateX(-50%);z-index:3;pointer-events:none;background:linear-gradient(90deg,#6d533522,#fff8, #654a3529);box-shadow:0 0 9px #0002}
+.nm2-book-real-page:before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;box-shadow:inset 0 0 10px #8d684522}
+.nm2-certificate{border-radius:2px!important;clip-path:polygon(0 .6%,7% 0,19% .4%,35% 0,55% .5%,78% .1%,100% .7%,99.6% 20%,100% 43%,99.5% 70%,100% 99%,80% 99.6%,60% 100%,35% 99.6%,12% 100%,0 99.3%,.4% 77%,0 53%,.3% 25%)!important;background:radial-gradient(ellipse at 20% 12%,#fff4d9 0,#f0d9ad 48%,#d5b37c 100%)!important;box-shadow:0 3px 0 #c09b66,0 6px 0 #e3c99e,0 26px 50px #0009!important}
+.nm2-certificate:before{border:3px double rgba(129,83,39,.57)!important;inset:clamp(10px,2.8vw,18px)!important}
+.nm2-certificate:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 0 0,rgba(116,71,31,.18),transparent 32%),radial-gradient(ellipse at 100% 100%,rgba(116,71,31,.15),transparent 30%),repeating-linear-gradient(3deg,transparent 0 6px,rgba(91,55,26,.014) 7px);mix-blend-mode:multiply}
+.nm2-certificate .nm2-seal{border:2px solid #ac8247!important;background:radial-gradient(circle at 30% 24%,#f7e6c4,#bd8c4c 92%)!important;box-shadow:inset 0 0 0 4px #d7b57c,0 2px 5px #78532e55!important}
+.nm2-certificate strong{font-size:clamp(1.1rem,4vw,2.1rem)!important}
+@media(max-width:700px){
+ .nm2-book-scene .nm2-stage{width:min(86vw,390px)!important;height:min(38svh,335px)!important}
+ .nm2-book-real-page img{object-fit:contain!important}
+ .nm2-certificate{padding:clamp(19px,5vw,30px)!important}
+}
+
+/* Final polish: show actual booklet pages at readable proportions on mobile. */
+.nm2-book-scene .nm2-stage{width:min(88vw,430px)!important;height:min(44svh,410px)!important}
+.nm2-book-real{display:block!important;overflow:visible!important;background:transparent!important;box-shadow:none!important;transform-style:flat!important}
+.nm2-book-real-spine{display:none!important}
+.nm2-book-real-page{position:absolute!important;inset:auto!important;display:block!important;aspect-ratio:566/800!important;width:61%!important;height:auto!important;overflow:hidden!important;border:1px solid #d4bb93!important;border-radius:2px!important;background:#fdf5e6!important;box-shadow:0 2px 0 #d5bf9a,0 4px 0 #e8d8b9,0 17px 28px #0008!important}
+.nm2-book-real-left{left:1%!important;top:7%!important;transform:rotate(-8deg)!important;z-index:1!important}
+.nm2-book-real-right{right:1%!important;top:0!important;transform:rotate(7deg)!important;z-index:2!important}
+.nm2-book-real-page img{display:block!important;width:100%!important;height:100%!important;aspect-ratio:566/800!important;object-fit:contain!important;background:#fffaf0!important}
+.nm2-book-real-page:before{display:none!important}
+.nm2-book-real-page:after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 10px #6e51211f}
+.nm2-certificate{isolation:isolate!important;transform-style:flat!important}
+.nm2-certificate>*{position:relative;z-index:2}
+.nm2-certificate:after{z-index:1!important}
+.nm2-certificate strong{color:#6b2f26!important;line-height:1.12!important}
+.nm2-certificate p{color:#563d2d!important}
+@media(max-width:700px){
+ .nm2-book-scene .nm2-stage{height:min(40svh,340px)!important;margin-top:clamp(160px,24svh,210px)!important}
+ .nm2-book-real-page{width:62%!important}
+ .nm2-book-real-left{left:0!important;top:5%!important}
+ .nm2-book-real-right{right:0!important;top:1%!important}
+}
+@media(prefers-reduced-motion:reduce){.nm2-book-real{transform:none!important}}
+
+/* Mantém os dados e botões legíveis sobre a arte do pergaminho. */
+.result .status{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;align-items:start;background:#f6ead4;border:1px solid #bba17c;border-radius:12px;padding:18px;margin-top:24px;color:#493124}
+.result .status p{min-width:0;max-width:100%;margin:0;color:#493124;overflow-wrap:anywhere}
+.result .status input{width:100%;min-width:0;box-sizing:border-box}
+.result .status .btn{width:fit-content;max-width:100%;text-align:center}
+@media(max-width:700px){.result .status{padding:14px}.result .status .btn{width:100%}}
+
+.result .status .btn.red{background:#9b292d;color:#fff;border-color:#9b292d}
+.result .status .btn.red:hover{background:#7f2024;color:#fff}
+
+
+/* Foto da oferta: preservar a cena inteira em telas largas e focar a criança no celular. */
+.nm-gift-stage{background:#130b09!important}
+@media(min-width:701px){
+ .nm-gift-reveal .nm-gift-photo{width:62%!important;object-fit:contain!important;object-position:center bottom!important;transform:none!important;filter:none!important}
+}
+@media(max-width:700px){
+ .nm-gift-reveal .nm-gift-photo{width:100%!important;object-fit:cover!important;object-position:center 72%!important;transform:none!important}
+}
+
+/* Comparação e áreas de toque do formulário no celular. */
+.compare-details{display:block!important;overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media(max-width:700px){.compare-details summary{min-height:44px;display:flex;align-items:center}.compare-details .cmp{min-width:320px}.form-actions .btn,#pacotes .btn,.result .btn{min-height:44px}}

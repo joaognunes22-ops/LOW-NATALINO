@@ -1,0 +1,26 @@
+/* Natal Magico — consistent film direction, progressive enhancement. */
+.nm-film-portal,.story-travel.story-letter-moment,.story-travel.story-noel-moment,.nm-gift-reveal{isolation:isolate}
+.nm-film-portal-pin,.story-travel .story-frame,.nm-gift-stage{contain:paint}
+.nm-film-line{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
+.nm-film-line-inner{display:block;transform:translate3d(0,0,0);opacity:1;will-change:transform,opacity}
+.nm-film-portal-title h2,.nm-film-portal-next strong,.story-copy h2,.nm-gift-copy h2{text-wrap:balance}
+.nm-film-portal .nm-film-shot,.story-travel .story-image,.nm-gift-photo{backface-visibility:hidden}
+.nm-film-portal .nm-film-portal-shade{pointer-events:none}
+.nm-film-portal-pin::after,.story-travel .story-frame::before,.nm-gift-stage::after{
+ content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
+ background:linear-gradient(180deg,rgba(2,10,19,.32),transparent 32%,transparent 58%,rgba(2,10,19,.54));
+ opacity:1;
+}
+.nm-film-portal-title,.nm-film-portal-next,.story-travel .story-copy,.nm-gift-copy{z-index:8!important;position:relative}
+.story-travel .story-paper,.story-travel .story-noel{z-index:5}
+.nm-gift-reveal .gift-button,.nm-gift-reveal .gift-message{position:relative;z-index:9}
+.nm-film-portal .nm-film-portal-cue,.story-travel .story-cue{z-index:9}
+@media(max-width:700px){
+ .nm-film-portal-title h2,.nm-film-portal-next strong{line-height:1.09;letter-spacing:-.035em}
+ .story-travel .story-copy h2,.nm-gift-copy h2{line-height:1.1;letter-spacing:-.035em}
+ .nm-film-portal-pin::after,.story-travel .story-frame::before,.nm-gift-stage::after{background:linear-gradient(180deg,rgba(2,10,19,.4),transparent 36%,rgba(2,10,19,.1) 64%,rgba(2,10,19,.66))}
+}
+@media(prefers-reduced-motion:reduce){
+ .nm-film-line-inner{transform:none!important;opacity:1!important;will-change:auto!important}
+ .nm-film-portal .nm-film-shot,.story-travel .story-image,.nm-gift-photo{will-change:auto!important}
+}

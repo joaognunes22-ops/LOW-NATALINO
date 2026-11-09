@@ -1,0 +1,350 @@
+/* Restaura a experiência original de scroll e estende a linguagem cinematográfica. */
+.scroll-journey{position:relative!important;height:400svh!important;min-height:400svh!important;overflow:visible!important}
+.scroll-journey>.hero{position:sticky!important;top:0!important;height:100svh!important;min-height:100svh!important;max-height:none!important;overflow:hidden!important}
+.scroll-journey .hero-content{opacity:1;visibility:visible;will-change:opacity,transform}
+.scroll-journey .hero-copy{visibility:visible}
+.scroll-journey .scene{display:block!important;opacity:1;will-change:transform,opacity}
+.scroll-journey .workshop,.scroll-journey .door-light,.scroll-journey .scroll-envelope,.scroll-journey .chapter{display:block!important}
+.scroll-journey .chapter{visibility:hidden;opacity:0}
+.scroll-journey .hero-live{display:none!important}
+.scroll-journey .scroll-hint,.scroll-journey .journey-progress,.scroll-journey .start-scroll-hint{display:block!important}
+.scroll-journey .hero-content{pointer-events:none}
+.scroll-journey .hero-content a,.scroll-journey .hero-content input,.scroll-journey .hero-content button{pointer-events:auto}
+.story-travel{display:block!important;position:relative!important;height:155svh!important;overflow:visible!important}
+.story-travel .story-frame{position:sticky!important;top:0!important;height:100svh!important;overflow:hidden!important}
+.story-travel .story-image{transform:scale(var(--story-scale,1))}
+.story-travel .story-copy{transform:translate3d(0,var(--nm-story-shift,0px),0);opacity:var(--nm-story-opacity,1)}
+/* Evita que o cabeçalho cubra a cena de entrada */
+.top{z-index:100!important}
+.scroll-journey .hero-content{z-index:5}
+.scroll-journey .chapter{z-index:6}
+.scroll-journey .workshop{pointer-events:none}
+.scroll-journey .scroll-envelope{pointer-events:none}
+.scroll-journey .chapter-three .actions,.scroll-journey .chapter-three a{pointer-events:auto}
+.nm-scroll-chapter{position:relative;isolation:isolate;--nm-p:0}
+.nm-scroll-chapter::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:calc(var(--nm-p) * .2);background:radial-gradient(ellipse at 75% 25%,rgba(231,186,111,.32),transparent 65%)}
+.nm-scroll-chapter>.content,.nm-scroll-chapter>.story-frame,.nm-scroll-chapter>.nm-gift-stage{position:relative;z-index:1}
+.nm-scroll-chapter .center h2,.nm-scroll-chapter .content>h2{transform:translate3d(0,calc((1 - var(--nm-p)) * 12px),0)}
+.nm-scroll-chapter .materials,.nm-scroll-chapter .offer-cards{transform:translate3d(0,calc((1 - var(--nm-p)) * 16px),0)}
+.nm-scroll-chapter .materials,.nm-scroll-chapter .offer-cards,.nm-scroll-chapter .center h2{transition:transform .12s linear}
+.nm-gift-reveal .nm-gift-photo{transform:scale(calc(1.08 - var(--nm-p) * .08))!important;transform-origin:35% 50%!important;will-change:transform}
+.nm-gift-reveal .nm-gift-gradient{opacity:calc(.65 + var(--nm-p) * .35)}
+@media(max-width:700px){
+ .scroll-journey{height:350svh!important;min-height:350svh!important}
+ .scroll-journey>.hero{height:100svh!important;min-height:100svh!important}
+ .scroll-journey .hero-content{padding:105px 18px 55px!important}
+ .scroll-journey .hero-copy h1{font-size:clamp(30px,7.6vw,42px)!important}
+ .scroll-journey .chapter{left:5%;right:5%}
+ .scroll-journey .chapter h2{font-size:clamp(27px,7vw,39px)}
+ .story-travel{height:140svh!important}
+ .nm-gift-reveal .nm-gift-photo{transform:scale(calc(1.04 - var(--nm-p) * .04))!important;transform-origin:40% 0!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .scroll-journey{height:auto!important;min-height:0!important}
+ .scroll-journey>.hero{position:relative!important;min-height:100svh!important}
+ .scroll-journey .chapter{display:none!important}
+ .scroll-journey .hero-content{opacity:1!important;visibility:visible!important;transform:none!important}
+ .scroll-journey .scene{transform:none!important;opacity:1!important}
+ .story-travel{height:auto!important;min-height:100svh!important}
+ .story-travel .story-frame{position:relative!important}
+ .nm-gift-reveal .nm-gift-photo{transform:none!important}
+}
+
+/* Cinematic depth inspired by premium scroll-led storytelling. */
+.story-travel:not(.future-video) .story-image{
+ transform:translate3d(0,var(--nm-scene-y,0px),0) scale(var(--story-scale,1.14))!important;
+ transform-origin:50% 48%;will-change:transform;
+}
+.story-travel:not(.future-video) .story-shade{
+ opacity:calc(.78 + var(--nm-scene-veil,0));
+}
+.story-travel:not(.future-video) .story-prop{
+ transform:translate3d(0,calc(var(--nm-scene-y,0px) * -.45),0);
+ will-change:transform;
+}
+.story-travel:not(.future-video) .story-copy{
+ transform:translate3d(0,var(--nm-story-shift,0px),0)!important;
+ opacity:var(--nm-story-opacity,1)!important;
+ will-change:transform,opacity;
+}
+.story-travel:not(.future-video) .story-cue{animation:nm-cue-breathe 2.8s ease-in-out infinite}
+@keyframes nm-cue-breathe{0%,100%{opacity:.52;transform:translateY(0)}50%{opacity:1;transform:translateY(6px)}}
+.story-travel:not(.future-video) .story-frame::after{
+ content:'';position:absolute;inset:auto 0 0;height:17vh;
+ background:linear-gradient(transparent,rgba(4,18,26,.48));
+ z-index:4;pointer-events:none;
+}
+#kit .mat,#pacotes .offer-card,#personalizar .formwrap{
+ transition:box-shadow .3s ease,transform .3s ease;
+}
+@media(max-width:700px){
+ .story-travel:not(.future-video) .story-image{transform-origin:50% 50%}
+ .story-travel:not(.future-video) .story-copy{max-width:min(90vw,470px)}
+ .story-travel:not(.future-video) .story-cue{bottom:25px}
+}
+@media(prefers-reduced-motion:reduce){
+ .story-travel:not(.future-video) .story-image,
+ .story-travel:not(.future-video) .story-prop,
+ .story-travel:not(.future-video) .story-copy{
+  transform:none!important;opacity:1!important;will-change:auto!important;
+ }
+ .story-travel:not(.future-video) .story-cue{animation:none!important}
+}
+
+/* Immersive director's pass: full-viewport pinned shots and scroll-controlled reveal. */
+.story-travel.story-letter-moment,
+.story-travel.story-noel-moment{height:190svh!important;min-height:0!important}
+.story-travel.story-letter-moment .story-frame,
+.story-travel.story-noel-moment .story-frame{height:100svh!important;min-height:0!important;position:sticky!important;top:0!important}
+.story-travel:not(.future-video) .story-image{
+ transform:translate3d(calc(var(--nm-scene-p,0) * -2vw),var(--nm-scene-y,0px),0) scale(calc(1.28 - var(--nm-scene-p,0) * .2))!important;
+ filter:brightness(calc(.72 + var(--nm-scene-p,0) * .22)) saturate(1.08);
+}
+.story-travel.story-letter-moment .story-paper{
+ transform:translate3d(0,calc((1 - var(--nm-scene-p,0)) * 14vh),0) rotate(calc((1 - var(--nm-scene-p,0)) * -8deg)) scale(calc(.72 + var(--nm-scene-p,0) * .28))!important;
+ opacity:clamp(0,calc(var(--nm-scene-p,0) * 2),1);
+ filter:drop-shadow(0 25px 45px rgba(0,0,0,.28));
+}
+.story-travel.story-noel-moment .story-noel{
+ transform:translate3d(calc((1 - var(--nm-scene-p,0)) * 8vw),calc((1 - var(--nm-scene-p,0)) * 9vh),0) scale(calc(1.13 - var(--nm-scene-p,0) * .13))!important;
+ opacity:clamp(0,calc(var(--nm-scene-p,0) * 2.4),1);
+ filter:drop-shadow(0 24px 45px rgba(0,0,0,.35));
+}
+.story-travel:not(.future-video) .story-copy{
+ opacity:clamp(0,calc(var(--nm-scene-p,0) * 2.3),1)!important;
+ transform:translate3d(0,calc((1 - var(--nm-scene-p,0)) * 9vh),0)!important;
+}
+.story-travel:not(.future-video) .story-frame::before{
+ content:'';position:absolute;inset:0;z-index:3;pointer-events:none;
+ background:linear-gradient(180deg,rgba(2,13,21,.3),transparent 28%,transparent 72%,rgba(2,13,21,.4));
+}
+.nm-gift-reveal{height:165svh!important;position:relative!important;overflow:visible!important}
+.nm-gift-reveal .nm-gift-stage{position:sticky!important;top:0!important;height:100svh!important;min-height:0!important;overflow:hidden!important}
+.nm-gift-reveal .nm-gift-photo{
+ transform:translate3d(calc((1 - var(--nm-gift-p,0)) * 3vw),0,0) scale(calc(1.25 - var(--nm-gift-p,0) * .25))!important;
+ filter:brightness(calc(.6 + var(--nm-gift-p,0) * .4)) saturate(1.1);
+}
+.nm-gift-reveal .nm-gift-gradient{opacity:calc(.65 + var(--nm-gift-p,0) * .35)!important}
+.nm-gift-reveal .nm-gift-copy{transform:translate3d(0,calc((1 - var(--nm-gift-p,0)) * 4vh),0)!important}
+@media(max-width:700px){
+ .story-travel.story-letter-moment,.story-travel.story-noel-moment{height:155svh!important}
+ .story-travel.story-letter-moment .story-paper{transform:translate3d(0,calc((1 - var(--nm-scene-p,0)) * 8vh),0) scale(calc(.85 + var(--nm-scene-p,0) * .15))!important}
+ .story-travel.story-noel-moment .story-noel{transform:translate3d(calc((1 - var(--nm-scene-p,0)) * 4vw),0,0) scale(calc(1.05 - var(--nm-scene-p,0) * .05))!important}
+ .nm-gift-reveal{height:150svh!important}
+ .nm-gift-reveal .nm-gift-stage{height:100svh!important;min-height:0!important;padding-top:0!important}
+ .nm-gift-reveal .nm-gift-photo{transform:scale(calc(1.12 - var(--nm-gift-p,0) * .12))!important}
+ .nm-gift-reveal .nm-gift-copy{transform:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .story-travel.story-letter-moment,.story-travel.story-noel-moment,.nm-gift-reveal{height:auto!important;min-height:100svh!important}
+ .story-travel.story-letter-moment .story-frame,.story-travel.story-noel-moment .story-frame,.nm-gift-reveal .nm-gift-stage{position:relative!important;min-height:100svh!important}
+ .story-travel:not(.future-video) .story-image,.story-travel:not(.future-video) .story-paper,.story-travel:not(.future-video) .story-noel,.story-travel:not(.future-video) .story-copy,.nm-gift-reveal .nm-gift-photo{transform:none!important;opacity:1!important;filter:none!important}
+}
+
+/* Director's finishing pass: scene-to-scene film language, not generic fade-ins. */
+.story-travel.story-letter-moment .story-frame,
+.story-travel.story-noel-moment .story-frame{
+ isolation:isolate;
+ background:#071a25;
+}
+.story-travel:not(.future-video) .story-frame::after{
+ content:"";position:absolute;inset:0!important;height:auto!important;
+ z-index:5;pointer-events:none;
+ background:
+  radial-gradient(ellipse at 50% 48%,transparent 30%,rgba(2,9,17,.4) 100%),
+  linear-gradient(180deg,rgba(3,13,21,.62),transparent 23%,transparent 77%,rgba(3,13,21,.72));
+ opacity:calc(.3 + (1 - var(--nm-scene-entry,0)) * .38);
+}
+.story-travel:not(.future-video) .story-copy{z-index:6}
+.story-travel:not(.future-video) .story-prop{z-index:5}
+.story-travel:not(.future-video) .story-copy{
+ text-shadow:0 2px 24px rgba(0,0,0,.7);
+}
+.story-travel:not(.future-video) .story-copy h2{
+ letter-spacing:-.045em;
+ line-height:1.05;
+ text-wrap:balance;
+}
+.story-travel:not(.future-video) .story-copy p{
+ max-width:34ch;
+ line-height:1.55;
+}
+.story-travel:not(.future-video) .story-cue{
+ position:absolute;z-index:7;
+ opacity:calc(var(--nm-scene-entry,0) * var(--nm-scene-exit,1));
+}
+.story-travel.story-letter-moment .story-paper,
+.story-travel.story-noel-moment .story-noel{
+ z-index:5;
+}
+.nm-gift-reveal .nm-gift-copy{z-index:5!important}
+.nm-gift-reveal .nm-gift-copy h2{
+ letter-spacing:-.045em;line-height:1.07;text-wrap:balance;
+}
+.nm-gift-reveal .nm-gift-photo{
+ will-change:transform;
+}
+.nm-gift-reveal .nm-gift-stage::after{
+ content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
+ background:radial-gradient(ellipse at 50% 52%,transparent 38%,rgba(4,14,19,.3));
+ opacity:calc(1 - var(--nm-gift-entry,0) * .5);
+}
+.nm-scroll-chapter:not(.story-travel):not(.nm-gift-reveal) .content{
+ transform:translate3d(0,calc((1 - var(--nm-entrance,1)) * 12px),0);
+ transition:transform .12s linear;
+}
+.nm-scroll-chapter:not(.story-travel):not(.nm-gift-reveal)::before{
+ opacity:calc(var(--nm-entrance,1) * .13);
+}
+.nm-lite-motion .story-travel:not(.future-video) .story-image,
+.nm-lite-motion .nm-gift-reveal .nm-gift-photo{filter:none!important}
+.nm-lite-motion .story-travel:not(.future-video) .story-cue{animation:none}
+@media(max-width:700px){
+ .story-travel:not(.future-video) .story-copy h2{font-size:clamp(29px,7.5vw,42px)}
+ .story-travel:not(.future-video) .story-copy p{font-size:clamp(14px,3.8vw,16px)}
+ .story-travel:not(.future-video) .story-frame::after{
+  background:linear-gradient(180deg,rgba(3,13,21,.62),transparent 24%,transparent 70%,rgba(3,13,21,.75));
+ }
+ .nm-scroll-chapter:not(.story-travel):not(.nm-gift-reveal) .content{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .story-travel:not(.future-video) .story-copy,.story-travel:not(.future-video) .story-prop{opacity:1!important}
+ .story-travel:not(.future-video) .story-cue{opacity:1!important;animation:none!important}
+ .nm-scroll-chapter:not(.story-travel):not(.nm-gift-reveal) .content{transform:none!important}
+}
+
+/* V5: visible cinematic timeline and distinct editorial film transitions. */
+.nm-film-progress{position:fixed;top:0;left:0;width:100%;height:3px;z-index:10001;pointer-events:none;background:rgba(243,220,173,.12)}
+.nm-film-progress-fill{display:block;width:100%;height:100%;transform:scaleX(0);transform-origin:left center;background:linear-gradient(90deg,#e8c18c,#fff3d2,#b92d2e);box-shadow:0 0 13px rgba(255,211,142,.55);will-change:transform}
+.nm-film-chapter{position:fixed;z-index:990;left:clamp(16px,3vw,48px);bottom:clamp(18px,4vh,40px);pointer-events:none;display:flex;align-items:center;gap:12px;opacity:0;transform:translateY(12px);transition:opacity .4s ease,transform .4s ease;color:#fff4df;text-shadow:0 2px 12px #07141dcc;font-family:inherit}
+.nm-film-chapter.is-visible{opacity:.9;transform:translateY(0)}
+.nm-film-chapter-index{font-size:10px;letter-spacing:.18em;font-weight:800;color:#f1c88c}
+.nm-film-chapter-name{font-size:12px;letter-spacing:.045em}
+.story-travel.story-letter-moment .story-frame,
+.story-travel.story-noel-moment .story-frame{box-shadow:inset 0 0 120px rgba(0,0,0,.18)}
+.story-travel.story-letter-moment .story-copy h2,
+.story-travel.story-noel-moment .story-copy h2{font-size:clamp(38px,5.8vw,86px);font-weight:750;line-height:.99}
+.story-travel.story-letter-moment .story-copy em,
+.story-travel.story-noel-moment .story-copy em{color:#f3d6a6}
+.story-travel:not(.future-video) .story-copy .eyebrow{letter-spacing:.2em;text-transform:uppercase;font-size:11px}
+.story-travel.story-letter-moment .story-frame::after,
+.story-travel.story-noel-moment .story-frame::after{mix-blend-mode:normal}
+@media(max-width:700px){
+ .nm-film-progress{height:2px}
+ .nm-film-chapter{bottom:12px;left:14px;gap:8px;background:rgba(4,19,28,.66);border:1px solid rgba(244,213,161,.18);border-radius:99px;padding:7px 11px;backdrop-filter:blur(8px)}
+ .nm-film-chapter-index{font-size:9px}
+ .nm-film-chapter-name{font-size:10px}
+ .story-travel.story-letter-moment .story-copy h2,
+ .story-travel.story-noel-moment .story-copy h2{font-size:clamp(30px,8.1vw,48px)}
+}
+@media(prefers-reduced-motion:reduce){.nm-film-progress,.nm-film-chapter{display:none!important}}
+
+/* Cinematic portal: two actual compositions morph as the user scrolls. */
+.nm-film-portal{height:245svh;position:relative;background:#061824;isolation:isolate;--nm-portal-p:0;--nm-portal-cut:0;--nm-portal-first:1;--nm-portal-last:0}
+.nm-film-portal-pin{position:sticky;top:0;height:100svh;width:100%;overflow:hidden;isolation:isolate;background:#071a27}
+.nm-film-shot{position:absolute;inset:-5%;background-position:center;background-size:cover;will-change:transform,clip-path,opacity;pointer-events:none}
+.nm-film-shot-a{z-index:1;background-image:url('../images/oficina-natal.webp');transform:translate3d(calc(var(--nm-portal-p)*-5vw),0,0) scale(calc(1.04 + var(--nm-portal-p)*.35));filter:brightness(.72) saturate(1.12)}
+.nm-film-shot-b{z-index:2;background-image:url('../images/interior-natal.webp');clip-path:circle(calc(var(--nm-portal-cut)*95%) at 52% 54%);transform:scale(calc(1.34 - var(--nm-portal-p)*.29));filter:brightness(.79) saturate(1.1)}
+.nm-film-portal-shade{position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,rgba(3,13,22,.62),rgba(3,13,22,.03) 42%,rgba(3,13,22,.55));pointer-events:none}
+.nm-film-portal-title,.nm-film-portal-next{position:absolute;z-index:4;left:clamp(24px,8vw,140px);right:clamp(24px,8vw,140px);top:50%;color:#fff7e8;text-shadow:0 4px 32px rgba(0,0,0,.65);pointer-events:none}
+.nm-film-portal-title{opacity:var(--nm-portal-first);transform:translate3d(0,calc(-50% - var(--nm-portal-p)*10vh),0)}
+.nm-film-portal-title h2{font-size:clamp(44px,7.5vw,112px);line-height:.96;letter-spacing:-.065em;margin:16px 0 18px;max-width:11ch;text-wrap:balance}
+.nm-film-portal-title h2 em{color:#f3d6a7;font-style:italic}
+.nm-film-portal-title p{font-size:clamp(15px,1.5vw,19px);max-width:32ch;line-height:1.5}
+.nm-film-portal-eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#f0d0a0;font-weight:700}
+.nm-film-portal-next{opacity:var(--nm-portal-last);transform:translate3d(0,calc(-50% + (1 - var(--nm-portal-p))*8vh),0);text-align:right}
+.nm-film-portal-next span{display:block;color:#f1d2a1;font-size:clamp(13px,1.3vw,18px);letter-spacing:.1em;margin-bottom:16px}
+.nm-film-portal-next strong{display:block;font-size:clamp(40px,6.2vw,94px);line-height:1.03;letter-spacing:-.05em}
+.nm-film-portal-cue{position:absolute;z-index:5;bottom:6vh;left:50%;transform:translateX(-50%);color:#fff3dd;font-size:11px;letter-spacing:.13em;text-transform:uppercase;text-shadow:0 2px 10px #000;opacity:calc(1 - var(--nm-portal-p)*.75);white-space:nowrap}
+@media(max-width:700px){
+ .nm-film-portal{height:205svh}
+ .nm-film-shot{inset:-9%;background-position:52% center}
+ .nm-film-shot-b{background-position:48% center}
+ .nm-film-portal-title,.nm-film-portal-next{left:24px;right:24px;top:45%}
+ .nm-film-portal-title h2{font-size:clamp(41px,10.5vw,65px)}
+ .nm-film-portal-next strong{font-size:clamp(34px,9vw,58px)}
+ .nm-film-portal-cue{bottom:9vh}
+}
+@media(prefers-reduced-motion:reduce){
+ .nm-film-portal{height:100svh}
+ .nm-film-portal-pin{position:relative}
+ .nm-film-shot-a{transform:none;filter:none}
+ .nm-film-shot-b{display:none}
+ .nm-film-portal-title{opacity:1;transform:translateY(-50%)}
+ .nm-film-portal-next{display:none}
+}
+
+/* Mobile-first director's correction: put the immersive camera shot early and make the transition unmistakable. */
+@media(max-width:700px){
+ .scroll-journey{height:260svh!important;min-height:260svh!important}
+ .scroll-journey>.hero{height:100svh!important}
+ .nm-film-portal{height:175svh!important;min-height:175svh!important}
+ .nm-film-portal-pin{position:sticky!important;top:0!important;height:100svh!important;overflow:hidden!important}
+ .nm-film-shot-a{inset:-16%!important;background-position:58% center!important;transform:translate3d(calc(var(--nm-portal-p)*-12vw),0,0) scale(calc(1.05 + var(--nm-portal-p)*.62))!important;filter:brightness(.64) saturate(1.16)}
+ .nm-film-shot-b{inset:-12%!important;background-position:50% center!important;clip-path:circle(calc(var(--nm-portal-cut)*110%) at 52% 52%)!important;transform:translate3d(calc((1 - var(--nm-portal-p))*6vw),0,0) scale(calc(1.5 - var(--nm-portal-p)*.4))!important;filter:brightness(.78) saturate(1.15)}
+ .nm-film-portal-title{top:44%;left:20px;right:20px;transform:translate3d(0,calc(-50% - var(--nm-portal-p)*15vh),0)!important}
+ .nm-film-portal-title h2{font-size:clamp(42px,11.5vw,68px)!important;line-height:.96!important;letter-spacing:-.06em!important}
+ .nm-film-portal-next{top:43%;left:20px;right:20px;transform:translate3d(0,calc(-50% + (1 - var(--nm-portal-p))*12vh),0)!important}
+ .nm-film-portal-next strong{font-size:clamp(39px,10vw,62px)!important}
+ .nm-film-portal-cue{bottom:7vh!important}
+}
+
+/* Single cinematic language: soft dark cut between shots, no circular wipe. */
+.nm-film-cut{position:fixed;inset:0;z-index:800;pointer-events:none;background:#030d17;opacity:0;will-change:opacity}
+.nm-film-portal .nm-film-shot-b{clip-path:none!important;opacity:var(--nm-portal-cut)!important;transform:translate3d(0,0,0) scale(calc(1.16 - var(--nm-portal-p)*.12))!important}
+.nm-film-portal .nm-film-shot-a{transform:translate3d(calc(var(--nm-portal-p)*-3vw),0,0) scale(calc(1.06 + var(--nm-portal-p)*.18))!important}
+.nm-film-portal-title,.nm-film-portal-next{transition:none!important}
+.nm-film-portal .nm-film-portal-shade{background:linear-gradient(180deg,rgba(3,13,22,.55),rgba(3,13,22,.06) 48%,rgba(3,13,22,.67))}
+@media(max-width:700px){
+ .nm-film-portal .nm-film-shot-a{transform:translate3d(calc(var(--nm-portal-p)*-4vw),0,0) scale(calc(1.07 + var(--nm-portal-p)*.24))!important}
+ .nm-film-portal .nm-film-shot-b{clip-path:none!important;opacity:var(--nm-portal-cut)!important;transform:scale(calc(1.24 - var(--nm-portal-p)*.16))!important}
+ .nm-film-portal .nm-film-portal-title h2{font-size:clamp(39px,10vw,58px)!important}
+ .nm-film-portal .nm-film-portal-next strong{font-size:clamp(36px,9vw,54px)!important}
+}
+@media(prefers-reduced-motion:reduce){.nm-film-cut{display:none!important}}
+
+/* Film direction v9 — same camera grammar across all chapters. */
+.story-travel.story-letter-moment,.story-travel.story-noel-moment{height:205svh!important;min-height:205svh!important;background:#061724}
+.story-travel.story-letter-moment>.story-frame,.story-travel.story-noel-moment>.story-frame{position:sticky!important;top:0!important;height:100svh!important;overflow:hidden!important;isolation:isolate}
+.story-travel.story-letter-moment .story-image,.story-travel.story-noel-moment .story-image{
+ transform:translate3d(calc((1 - var(--nm-scene-p,0)) * -3vw),calc((.5 - var(--nm-scene-p,0)) * 3vh),0) scale(calc(1.2 - var(--nm-scene-p,0) * .15))!important;
+ filter:brightness(calc(.64 + var(--nm-scene-p,0) * .22)) saturate(1.1)!important;
+ transform-origin:50% 45%;will-change:transform
+}
+.story-travel.story-letter-moment .story-paper{
+ transform:translate3d(0,calc((1 - var(--nm-scene-p,0)) * 14vh),0) rotate(calc((1 - var(--nm-scene-p,0)) * -5deg)) scale(calc(.76 + var(--nm-scene-p,0) * .24))!important;
+ opacity:clamp(0,calc(var(--nm-scene-p,0) * 2.9 - .35),1)!important
+}
+.story-travel.story-noel-moment .story-noel{
+ transform:translate3d(calc((1 - var(--nm-scene-p,0)) * 9vw),calc((1 - var(--nm-scene-p,0)) * 9vh),0) scale(calc(1.12 - var(--nm-scene-p,0) * .12))!important;
+ opacity:clamp(0,calc(var(--nm-scene-p,0) * 3 - .3),1)!important
+}
+.story-travel.story-letter-moment .story-copy,.story-travel.story-noel-moment .story-copy{
+ opacity:var(--nm-film-title,0)!important;
+ transform:translate3d(0,calc((1 - var(--nm-film-title,0)) * 8vh),0)!important;
+ text-shadow:0 4px 24px rgba(0,0,0,.72)
+}
+.story-travel.story-letter-moment .story-shade,.story-travel.story-noel-moment .story-shade{
+ background:linear-gradient(180deg,rgba(3,12,22,.36),rgba(3,12,22,.05) 42%,rgba(3,12,22,.7))!important
+}
+.nm-gift-reveal .nm-gift-photo{
+ transform:translate3d(calc((1 - var(--nm-gift-p,0)) * 3vw),0,0) scale(calc(1.2 - var(--nm-gift-p,0) * .15))!important;
+ filter:brightness(calc(.68 + var(--nm-gift-p,0) * .24)) saturate(1.1)!important
+}
+.nm-film-portal-title,.nm-film-portal-next,.story-travel .story-copy{backface-visibility:hidden}
+@media(max-width:700px){
+ .story-travel.story-letter-moment,.story-travel.story-noel-moment{height:165svh!important;min-height:165svh!important}
+ .story-travel.story-letter-moment>.story-frame,.story-travel.story-noel-moment>.story-frame{height:100svh!important}
+ .story-travel.story-letter-moment .story-image,.story-travel.story-noel-moment .story-image{
+  transform:translate3d(calc((1 - var(--nm-scene-p,0)) * -4vw),0,0) scale(calc(1.22 - var(--nm-scene-p,0) * .16))!important
+ }
+ .story-travel.story-letter-moment .story-copy,.story-travel.story-noel-moment .story-copy{max-width:min(88vw,420px)!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .story-travel.story-letter-moment,.story-travel.story-noel-moment{height:auto!important;min-height:100svh!important}
+ .story-travel.story-letter-moment>.story-frame,.story-travel.story-noel-moment>.story-frame{position:relative!important}
+ .story-travel.story-letter-moment .story-image,.story-travel.story-noel-moment .story-image,
+ .story-travel.story-letter-moment .story-paper,.story-travel.story-noel-moment .story-noel,
+ .nm-gift-reveal .nm-gift-photo{transform:none!important;filter:none!important;opacity:1!important}
+ .story-travel.story-letter-moment .story-copy,.story-travel.story-noel-moment .story-copy{opacity:1!important;transform:none!important}
+}

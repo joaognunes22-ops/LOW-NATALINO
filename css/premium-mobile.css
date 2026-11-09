@@ -1,0 +1,348 @@
+/* Natal Mágico · Visual refinement 2026-11-06
+   Mobile-first visual polish. Non-invasive: preserves purchase, personalization and animations. */
+:root{--nm-gold:#f3d6a1;--nm-cream:#fff5e7;--nm-night:#071b27;--nm-red:#c8473b}
+html{scroll-padding-top:84px}
+body{overflow-x:clip;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
+button,a{touch-action:manipulation}
+:where(a,button,input,select,textarea,summary):focus-visible{outline:3px solid #f2d39c!important;outline-offset:3px}
+.hero{isolation:isolate}
+.hero-content{position:relative;z-index:2}
+.hero-copy h1{letter-spacing:-.045em;text-wrap:balance}
+.hero-brief{max-width:510px}
+.hero-shortcuts a{min-height:46px;display:inline-flex;align-items:center;justify-content:center;transition:transform .2s ease,box-shadow .2s ease}
+.hero-shortcuts a:first-child{background:#f4d9a9;color:#142630!important;border-color:#f4d9a9;box-shadow:0 8px 30px #060e1666;font-weight:700}
+.hero-shortcuts a:hover{transform:translateY(-2px)}
+.content h2,.gift-copy h2{text-wrap:balance;letter-spacing:-.035em}
+.moment-strip{max-width:1100px;margin-inline:auto}
+.moment-strip>div{min-width:0}
+.offer-card{position:relative;overflow:hidden}
+.offer-card-paper{box-shadow:0 22px 75px #0002}
+.offer-price strong{font-variant-numeric:tabular-nums}
+.formwrap{max-width:780px;margin-inline:auto}
+.formwrap input,.formwrap textarea,.formwrap select{min-height:48px;font-size:16px}
+.formwrap textarea{min-height:105px}
+.formwrap label{text-align:left}
+.gift-pin{background:linear-gradient(115deg,rgba(4,18,26,.83),rgba(8,25,32,.44)),url('../images/interior-natal.webp') center/cover;isolation:isolate}
+.gift-inner{max-width:900px}
+.gift-noel{object-fit:contain;object-position:center bottom;filter:drop-shadow(0 15px 25px rgba(0,0,0,.32));mask-image:linear-gradient(to bottom,#000 0%,#000 85%,transparent 100%)}
+.gift-copy{max-width:600px;margin-inline:auto}
+.gift-copy h2{line-height:1.1}
+.gift-message:not([hidden]){border:1px solid rgba(244,210,155,.32);border-radius:18px;background:rgba(7,24,31,.76);padding:18px 20px;backdrop-filter:blur(8px)}
+.chimney-transition{background:radial-gradient(ellipse at 50% 50%,rgba(163,102,53,.35),rgba(15,18,21,.96) 65%,#06151b)}
+.chimney-shaft{background:radial-gradient(ellipse at center,#101719 0 23%,#312721 38%,#0a151b 76%)!important;box-shadow:inset 0 0 75px 45px rgba(0,0,0,.62);filter:none}
+.chimney-glow{background:radial-gradient(ellipse at 50% 55%,rgba(255,191,111,.27),transparent 49%)}
+@media(max-width:700px){
+  html{scroll-padding-top:65px}
+  nav.top{padding-inline:4%;min-height:62px}
+  nav.top .brand{white-space:nowrap}
+  nav.top .links{gap:7px}
+  nav.top .links>a:not(.btn){display:none}
+  nav.top .btn{min-height:42px;display:inline-flex;align-items:center;justify-content:center;padding:8px 12px}
+  .hero{min-height:100svh}
+  .hero-content{padding-inline:6%}
+  .hero-copy h1{font-size:clamp(37px,10.3vw,57px);line-height:1.06}
+  .hero-copy>p{max-width:36ch;margin-inline:auto}
+  .hero-brief{font-size:14px!important}
+  .hero-shortcuts{display:grid;grid-template-columns:1fr;gap:9px;max-width:340px;margin:18px auto 0}
+  .hero-shortcuts a{width:100%;min-height:48px;font-size:14px}
+  .start-scroll-hint{opacity:.65}
+  .moment-strip{padding-inline:5%;gap:8px}
+  .moment-strip>div{padding:10px 7px}
+  .moment-strip span{font-size:10px;letter-spacing:.04em}
+  .moment-strip p{font-size:12px;line-height:1.3}
+  section.content{padding:48px 5.5%}
+  .content h2{font-size:clamp(29px,8.1vw,42px);line-height:1.14}
+  .materials{gap:12px}
+  .materials .mat{min-width:0}
+  .offer-cards{gap:14px}
+  .offer-card{padding:22px 18px;border-radius:20px}
+  .formwrap{width:100%;padding-inline:0}
+  .formwrap input,.formwrap select,.formwrap textarea{width:100%;max-width:100%;box-sizing:border-box}
+  .stepper{gap:4px}
+  .stepper li{font-size:11px}
+  .gift-reveal{height:110svh}
+  .gift-pin{min-height:100svh;padding:72px 6% 28px;background-position:58% center}
+  .gift-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0}
+  .gift-noel{width:min(40vw,150px);height:auto;max-height:23svh;margin:0 auto -10px;flex-shrink:0}
+  .gift-copy{width:100%;max-width:370px}
+  .gift-copy h2{font-size:clamp(28px,8vw,37px);margin:10px 0}
+  .gift-copy p{line-height:1.45}
+  .gift-button{margin:2px auto 0}
+  .gift-message:not([hidden]){padding:12px 15px}
+  .chimney-transition{display:none!important}
+  .story-travel{height:112svh}
+  .story-letter-moment,.story-noel-moment{height:110svh}
+}
+@media(max-width:380px){
+  nav.top .brand{font-size:15px}
+  nav.top .btn{font-size:11px;padding-inline:9px}
+  .gift-noel{max-height:18svh;width:min(36vw,124px)}
+  .gift-copy h2{font-size:27px}
+  .gift-copy p{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .gift-noel{transform:none!important}
+}
+
+/* Scroll-directed gift sequence: approach -> present -> reveal.
+   Uses transform and opacity only for smooth mobile rendering. */
+.gift-reveal{height:180svh!important;--gift-progress:0;--gift-approach:0}
+.gift-pin{position:sticky;top:0;height:100svh;min-height:100svh;overflow:hidden;isolation:isolate}
+.gift-pin::before{content:"";position:absolute;inset:-5%;z-index:0;pointer-events:none;background:linear-gradient(90deg,rgba(6,16,22,.28),rgba(6,16,22,.05)),url('../images/interior-natal.webp') center/cover;transform:scale(calc(1.04 + var(--gift-progress)*.13)) translate3d(0,calc(var(--gift-progress)*-1.5%),0);opacity:.7}
+.gift-pin::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 45% 66%,rgba(255,185,96,.20),transparent 52%),linear-gradient(to top,rgba(4,14,20,.66),transparent 55%);opacity:calc(.45 + var(--gift-progress)*.45)}
+.gift-inner{position:relative;z-index:2}
+.gift-noel{transform:translate3d(calc((1 - var(--gift-progress)) * -24px),calc((1 - var(--gift-progress)) * 16px),0) scale(calc(.93 + var(--gift-progress)*.09));transition:filter .25s ease}
+.gift-copy{transform:translate3d(0,calc((1 - var(--gift-progress)) * 17px),0);opacity:calc(.72 + var(--gift-progress)*.28)}
+.gift-direction{opacity:calc(1 - var(--gift-progress)*.8)}
+.gift-button{filter:drop-shadow(0 8px 20px rgba(247,172,81,.28))}
+.gift-open .gift-button{filter:drop-shadow(0 0 25px rgba(255,201,115,.65))}
+.gift-open .gift-message:not([hidden]){animation:nm-gift-enter .65s cubic-bezier(.2,.8,.2,1) both}
+@keyframes nm-gift-enter{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:700px){
+ .gift-reveal{height:158svh!important}
+ .gift-pin{height:100svh;min-height:100svh;padding:66px 5% 18px;background-position:center}
+ .gift-pin::before{background-position:62% center;opacity:.64}
+ .gift-inner{max-width:390px}
+ .gift-noel{max-height:23svh;width:min(43vw,165px)}
+ .gift-copy{max-width:360px}
+ .gift-copy h2{font-size:clamp(27px,7.8vw,36px)}
+ .gift-direction{margin-bottom:4px}
+}
+@media(max-width:380px){.gift-noel{max-height:19svh}}
+@media(prefers-reduced-motion:reduce){
+ .gift-reveal{height:auto!important}
+ .gift-pin{position:relative;height:auto;min-height:80svh}
+ .gift-pin::before,.gift-noel,.gift-copy{transform:none!important}
+ .gift-open .gift-message:not([hidden]){animation:none}
+}
+
+/* Single-frame cinematic gift scene. The photo is enabled only when the file exists. */
+.gift-cinematic-scene{position:absolute;inset:0;z-index:-1;pointer-events:none;background:url('../images/interior-natal.webp') center/cover;opacity:.15;transform:scale(calc(1.02 + var(--gift-progress)*.11));transition:opacity .4s ease}
+.gift-cinematic-shade{position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(4,13,20,.12),rgba(4,13,20,.65) 70%),linear-gradient(0deg,rgba(3,13,20,.72),transparent 60%);opacity:0}
+.gift-reveal.has-cinematic-photo .gift-pin{background:#06141d}
+.gift-reveal.has-cinematic-photo .gift-pin::before{opacity:0}
+.gift-reveal.has-cinematic-photo .gift-cinematic-scene{background-image:url('../images/papai-noel-presente-cinematico.webp');opacity:1;filter:saturate(.92) contrast(1.03)}
+.gift-reveal.has-cinematic-photo .gift-cinematic-shade{opacity:1}
+.gift-reveal.has-cinematic-photo .gift-noel{display:none}
+.gift-reveal.has-cinematic-photo .gift-inner{grid-template-columns:1fr;max-width:100%}
+.gift-reveal.has-cinematic-photo .gift-copy{margin-left:auto;margin-right:2%;padding:clamp(18px,3vw,38px);max-width:490px;background:rgba(5,18,25,.66);border:1px solid rgba(248,215,159,.25);border-radius:22px;backdrop-filter:blur(5px)}
+@media(max-width:700px){
+ .gift-reveal.has-cinematic-photo .gift-cinematic-scene{background-position:44% center}
+ .gift-reveal.has-cinematic-photo .gift-cinematic-shade{background:linear-gradient(0deg,rgba(3,13,20,.92) 0%,rgba(3,13,20,.60) 49%,rgba(3,13,20,.02) 100%)}
+ .gift-reveal.has-cinematic-photo .gift-inner{height:100%;justify-content:flex-end;padding-bottom:clamp(18px,5svh,48px)}
+ .gift-reveal.has-cinematic-photo .gift-copy{margin:0 auto;padding:16px;max-width:350px;background:rgba(5,18,25,.50)}
+}
+@media(prefers-reduced-motion:reduce){.gift-cinematic-scene{transform:none!important;transition:none!important}}
+
+/* Parent-first compact landing: four essential stops (hero, kit, reveal, checkout).
+   Hide only promotional repetition, never checkout fields or important disclosures. */
+.moment-strip,
+.trust,
+#carta,
+.story-travel,
+#video.future-video,
+#como,
+#pacotes .offer-comparison,
+#pacotes .comparison,
+#pacotes .compare-table{display:none!important}
+.scroll-journey{min-height:0!important}
+.hero{min-height:min(100svh,850px)!important}
+.hero-copy h1{max-width:660px;font-size:clamp(32px,5.5vw,68px);line-height:1.08}
+.hero-copy .eyebrow{font-size:11px}
+.hero-copy>p:not(.hero-brief){max-width:500px}
+.hero-copy .hero-brief{max-width:500px;line-height:1.5}
+.hero-copy .hero-shortcuts{display:flex;gap:10px;flex-wrap:wrap}
+.hero-copy .hero-shortcuts a{min-height:46px;display:inline-flex;align-items:center;justify-content:center}
+#kit>.content,#pacotes>.content,#personalizar.content{padding-top:clamp(32px,5vw,65px)!important;padding-bottom:clamp(32px,5vw,65px)!important}
+#kit .center>p{max-width:480px;margin-inline:auto}
+#kit .materials{gap:14px}
+#pacotes .offer-cards{margin-top:18px}
+#personalizar .muted{max-width:440px;margin-inline:auto}
+#duvidas.content{padding-top:24px!important;padding-bottom:45px!important}
+#duvidas .eyebrow{display:none}
+#duvidas h2{font-size:clamp(23px,3vw,32px);margin-bottom:16px}
+#duvidas .faq details{padding-block:12px}
+.gift-reveal{height:155svh!important}
+@media(max-width:700px){
+ .hero{min-height:100svh!important}
+ .hero-copy h1{font-size:clamp(30px,8.3vw,42px);letter-spacing:-.025em}
+ .hero-copy .hero-brief{font-size:14px}
+ .hero-copy .hero-status{display:none}
+ .hero-copy .hero-shortcuts{gap:8px}
+ .hero-copy .hero-shortcuts a{font-size:13px;padding:11px 13px}
+ .hero-live .detail-badge,.hero-live .parcel-tag{display:none}
+ .start-scroll-hint,.scroll-hint,.journey-progress,.journey-links{display:none!important}
+ #kit>.content,#pacotes>.content,#personalizar.content{padding-top:28px!important;padding-bottom:30px!important}
+ #kit .center h2,#pacotes h2,#personalizar h2{font-size:clamp(26px,7vw,34px);line-height:1.12}
+ #kit .center>p{font-size:14px;line-height:1.45}
+ #kit .materials{gap:10px}
+ .gift-reveal{height:135svh!important}
+ .gift-pin{min-height:100svh}
+ #duvidas .faq{margin-top:8px}
+}
+@media(prefers-reduced-motion:reduce){.gift-reveal{height:auto!important}}
+
+/* Clarity pass: retain photographic, parchment and cinematic treatment. */
+.future-video,.video-note,.compare-details{display:none!important}
+.hero-copy .hero-brief strong{color:#f7d29a;font-weight:800}
+.hero-copy .hero-shortcuts a:last-child{background:linear-gradient(135deg,#b72b2c,#831b23);color:#fff!important;border:1px solid rgba(255,220,185,.45);box-shadow:0 8px 25px rgba(86,13,20,.35)}
+.hero-copy .hero-shortcuts a:first-child{background:rgba(5,23,32,.48);border:1px solid rgba(241,211,171,.35);color:#fff}
+.hero-copy .hero-shortcuts a:focus-visible{outline:3px solid #ffe4b7;outline-offset:3px}
+#kit .materials .mat{transition:transform .25s ease,box-shadow .25s ease}
+@media(hover:hover){#kit .materials .mat:hover{transform:translateY(-3px)}}
+#pacotes .offer-cards{display:flex;justify-content:center}
+#pacotes .offer-card-paper{width:min(100%,560px);max-width:560px}
+#pacotes .offer-benefits{margin-top:14px}
+#pacotes .offer-benefits li{padding-block:9px}
+#pacotes .offer-benefits small{line-height:1.35}
+#pacotes .offer-price strong{font-variant-numeric:tabular-nums}
+#personalizar .formwrap{box-shadow:0 16px 50px rgba(11,24,27,.13)}
+@media(max-width:700px){
+ .hero-copy .hero-shortcuts a:last-child{order:-1;width:100%;font-size:15px;font-weight:750}
+ .hero-copy .hero-shortcuts a:first-child{width:100%;background:transparent;border:0;text-decoration:underline;text-underline-offset:4px;box-shadow:none}
+ .hero-copy .hero-shortcuts{width:100%}
+ .hero-copy .hero-brief strong{display:inline-block;margin-top:3px}
+ #kit .materials{margin-top:18px}
+ #pacotes .offer-card-paper{max-width:100%}
+ #pacotes .offer-benefits li{padding-block:7px}
+ #personalizar .stepper{margin-bottom:12px}
+}
+
+/* Critical: compact journey must not leave an empty sticky hero.
+   Keep the original photographic composition visible at every scroll position. */
+
+
+
+
+
+
+
+.scroll-journey .hero-content{padding-bottom:clamp(72px,10vh,125px)!important}
+@media(max-width:700px){
+ .scroll-journey>.hero{min-height:100svh!important}
+ .scroll-journey .hero-content{padding-bottom:95px!important}
+}
+
+/* Cinematic composition correction: stable framing, no cropped Santa or nav overlap. */
+.gift-reveal.has-cinematic-photo{height:auto!important;min-height:0!important;overflow:visible}
+.gift-reveal.has-cinematic-photo .gift-pin{
+ position:relative!important;top:auto!important;height:auto!important;
+ min-height:clamp(560px,82svh,760px)!important;
+ padding:clamp(100px,12svh,140px) 6% 55px!important;
+ display:flex;align-items:center;justify-content:flex-end;
+ overflow:hidden;isolation:isolate;
+}
+.gift-reveal.has-cinematic-photo .gift-inner{
+ position:relative!important;z-index:3!important;
+ display:flex!important;align-items:center!important;justify-content:flex-end!important;
+ width:100%;max-width:1180px;margin-inline:auto;
+ min-height:380px;
+}
+.gift-reveal.has-cinematic-photo .gift-cinematic-scene{
+ position:absolute!important;inset:0!important;z-index:0!important;
+ background-image:url('../images/papai-noel-presente-cinematico.webp')!important;
+ background-position:32% center!important;background-size:cover!important;
+ transform:none!important;filter:none!important;opacity:1!important;
+}
+.gift-reveal.has-cinematic-photo .gift-cinematic-shade{
+ position:absolute!important;inset:0!important;z-index:1!important;
+ background:linear-gradient(90deg,rgba(4,14,22,.03) 0%,rgba(4,14,22,.18) 42%,rgba(4,14,22,.86) 77%,rgba(4,14,22,.93) 100%)!important;
+ opacity:1!important;
+}
+.gift-reveal.has-cinematic-photo .gift-copy{
+ position:relative!important;z-index:4!important;transform:none!important;opacity:1!important;
+ margin:0!important;width:min(100%,430px)!important;max-width:430px!important;
+ padding:24px 26px!important;text-align:center!important;
+ background:rgba(6,20,27,.68)!important;border:1px solid rgba(243,212,161,.23)!important;
+ border-radius:20px!important;backdrop-filter:blur(6px);
+}
+.gift-reveal.has-cinematic-photo .gift-copy h2{font-size:clamp(28px,3.5vw,44px)!important;line-height:1.12!important;margin:8px 0 12px!important}
+.gift-reveal.has-cinematic-photo .gift-copy p{font-size:14px!important;line-height:1.45!important;margin:8px auto!important}
+.gift-reveal.has-cinematic-photo .gift-button{margin:10px auto 0!important}
+.gift-reveal.has-cinematic-photo .gift-direction{opacity:1!important}
+@media(max-width:700px){
+ .gift-reveal.has-cinematic-photo .gift-pin{
+  min-height:clamp(660px,100svh,850px)!important;
+  padding:72px 16px 24px!important;align-items:flex-end!important;
+ }
+ .gift-reveal.has-cinematic-photo .gift-cinematic-scene{
+  background-position:38% top!important;background-size:auto 100%!important;
+ }
+ .gift-reveal.has-cinematic-photo .gift-cinematic-shade{
+  background:linear-gradient(0deg,rgba(4,15,23,.96) 0%,rgba(4,15,23,.88) 34%,rgba(4,15,23,.16) 68%,rgba(4,15,23,.03) 100%)!important;
+ }
+ .gift-reveal.has-cinematic-photo .gift-inner{
+  min-height:0!important;align-items:flex-end!important;justify-content:center!important;
+  padding:0!important;
+ }
+ .gift-reveal.has-cinematic-photo .gift-copy{
+  width:min(100%,380px)!important;max-width:380px!important;
+  margin:0 auto!important;padding:16px 15px!important;
+  background:rgba(5,17,24,.75)!important;backdrop-filter:blur(3px);
+ }
+ .gift-reveal.has-cinematic-photo .gift-copy h2{font-size:clamp(26px,7vw,34px)!important}
+ .gift-reveal.has-cinematic-photo .gift-copy .noel-message{font-size:13px!important}
+}
+
+/* HOTFIX: one stable image layer, no stacked fixed overlays or viewport clipping. */
+.gift-reveal.has-cinematic-photo{
+ display:block!important;position:relative!important;
+ height:auto!important;min-height:0!important;padding:0!important;
+ overflow:hidden!important;isolation:isolate;
+}
+.gift-reveal.has-cinematic-photo .gift-pin{
+ position:relative!important;top:auto!important;left:auto!important;right:auto!important;
+ display:flex!important;align-items:center!important;justify-content:flex-end!important;
+ box-sizing:border-box!important;width:100%!important;height:auto!important;
+ min-height:650px!important;max-height:none!important;
+ padding:100px max(5%,24px) 55px!important;
+ overflow:hidden!important;isolation:isolate!important;
+ background:#081922 url('../images/papai-noel-presente-cinematico.webp') 34% center / cover no-repeat!important;
+ transform:none!important;opacity:1!important;
+}
+.gift-reveal.has-cinematic-photo .gift-pin::before,
+.gift-reveal.has-cinematic-photo .gift-pin::after,
+.gift-reveal.has-cinematic-photo .gift-cinematic-scene,
+.gift-reveal.has-cinematic-photo .gift-cinematic-shade,
+.gift-reveal.has-cinematic-photo .chimney-transition{
+ display:none!important;content:none!important;
+}
+.gift-reveal.has-cinematic-photo .gift-inner{
+ position:relative!important;inset:auto!important;
+ display:flex!important;justify-content:flex-end!important;align-items:center!important;
+ min-height:0!important;max-width:1180px!important;width:100%!important;
+ margin:0 auto!important;padding:0!important;transform:none!important;
+ opacity:1!important;visibility:visible!important;
+}
+.gift-reveal.has-cinematic-photo .gift-copy{
+ position:relative!important;inset:auto!important;z-index:2!important;
+ box-sizing:border-box!important;flex:0 1 425px!important;
+ width:min(100%,425px)!important;max-width:425px!important;
+ margin:0!important;padding:25px!important;
+ background:rgba(5,18,25,.88)!important;
+ border:1px solid rgba(245,209,149,.34)!important;border-radius:18px!important;
+ box-shadow:0 20px 55px rgba(0,0,0,.35)!important;
+ opacity:1!important;visibility:visible!important;transform:none!important;
+ text-align:center!important;
+}
+.gift-reveal.has-cinematic-photo .gift-copy h2{
+ font-size:clamp(27px,3vw,40px)!important;line-height:1.12!important;
+ margin:9px 0 12px!important;color:#fff5e5!important;
+}
+.gift-reveal.has-cinematic-photo .gift-copy p{color:#f5e8d6!important}
+.gift-reveal.has-cinematic-photo .gift-noel{display:none!important}
+@media(max-width:700px){
+ .gift-reveal.has-cinematic-photo .gift-pin{
+  min-height:760px!important;padding:315px 16px 28px!important;
+  align-items:flex-end!important;justify-content:center!important;
+  background-position:42% top!important;background-size:auto 760px!important;
+ }
+ .gift-reveal.has-cinematic-photo .gift-inner{justify-content:center!important}
+ .gift-reveal.has-cinematic-photo .gift-copy{
+  flex:0 1 370px!important;width:100%!important;max-width:370px!important;
+  padding:18px 15px!important;background:rgba(5,18,25,.94)!important;
+ }
+ .gift-reveal.has-cinematic-photo .gift-copy h2{font-size:clamp(26px,7vw,34px)!important}
+}

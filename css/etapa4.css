@@ -1,0 +1,37 @@
+/* Etapa 4 — acabamento realista, mobile-first, sem alterar o checkout */
+#carta .letter,.materials .paper-stage{background-color:#f8ecd0;background-image:radial-gradient(ellipse at 12% 8%,rgba(173,123,52,.13),transparent 55%),repeating-linear-gradient(0deg,transparent 0 5px,rgba(84,57,28,.018) 6px);box-shadow:0 18px 44px rgba(44,27,12,.17),0 3px 10px rgba(44,27,12,.09);border:1px solid rgba(143,104,54,.2)}
+.materials .mat{transform-style:preserve-3d;transition:transform .35s ease}.materials .mat:nth-child(1){transform:perspective(1000px) rotateY(-2deg)}.materials .mat:nth-child(2){transform:perspective(1000px) rotateY(2deg)}.materials .mat:nth-child(3){transform:perspective(1000px) rotateY(-2deg)}
+.nm4-ink{display:inline-block;max-width:100%;transform-origin:left center;animation:nm4-ink .48s ease-out both}@keyframes nm4-ink{from{transform:translateY(5px) scale(.98);opacity:.15}to{transform:translateY(0) scale(1);opacity:1}}
+.nm4-progress{height:5px;background:rgba(159,116,61,.18);border-radius:99px;overflow:hidden;margin:4px 0 22px}.nm4-progress>span{display:block;width:33.333%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#9c6739,#e2b96d);transition:width .38s ease}
+#form fieldset:not([hidden]){animation:nm4-panel .32s ease both}@keyframes nm4-panel{from{opacity:.3;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+.nm4-video{position:relative;aspect-ratio:9/16;width:min(100%,340px);margin:24px auto;overflow:hidden;border-radius:20px;background:#14232b;box-shadow:0 20px 45px rgba(0,0,0,.22)}.nm4-video video{display:block;width:100%;height:100%;object-fit:cover}.nm4-sound{position:absolute;right:14px;bottom:14px;padding:10px 14px;border-radius:24px;border:1px solid #ffffff66;background:#18242acc;color:white;cursor:pointer}.nm4-video[hidden],.nm4-testimonials[hidden]{display:none!important}
+@media(hover:hover){.materials .mat:hover{transform:perspective(1000px) translateY(-5px) rotateY(0)}}
+@media(max-width:640px){.materials .mat:nth-child(n){transform:none}}
+@media(prefers-reduced-motion:reduce){.nm4-ink,#form fieldset:not([hidden]){animation:none!important}.nm4-progress>span,.materials .mat{transition:none!important}}
+
+/* Etapa 5: mockups de papel e etapas acessíveis */
+#carta .letter{position:relative;isolation:isolate;transform:perspective(1200px) rotateX(1deg);box-shadow:0 22px 48px rgba(38,23,14,.2),0 2px 8px rgba(38,23,14,.1)}
+#carta .letter::after{content:"";position:absolute;inset:8px;pointer-events:none;border:1px solid rgba(145,101,48,.12);border-radius:inherit}
+.materials .paper-stage{position:relative;isolation:isolate;box-shadow:0 16px 34px rgba(45,28,15,.18)}
+.materials .mat{backface-visibility:hidden}
+#stepper li.active{color:#7a3726;font-weight:800}
+#stepper li.done{opacity:.85}
+.nm4-progress{height:6px;margin-block:8px 22px}
+.nm4-progress>span{background:linear-gradient(90deg,#8a4630,#d8a95f)}
+#form fieldset[hidden]{display:none!important}
+#form fieldset:not([hidden]){transform-origin:top center}
+@media(max-width:700px){#carta .letter{transform:none}.materials .mat{transform:none!important}.nm4-progress{margin-bottom:18px}}
+@media(prefers-reduced-motion:reduce){#carta .letter{transform:none}.nm4-ink{animation:none!important}}
+
+/* Mockups físicos em todas as prévias — manter textos e personalização existentes */
+#carta .letter,.hero-live .package-paper,.materials .paper-stage{background-color:#f4e6c9;background-image:radial-gradient(ellipse at 18% 12%,rgba(255,255,255,.6),transparent 54%),radial-gradient(ellipse at 90% 88%,rgba(142,94,42,.12),transparent 60%),repeating-linear-gradient(0deg,transparent 0 5px,rgba(99,69,36,.022) 6px);border:1px solid #c4a579;box-shadow:0 1px 0 #fff8 inset,0 2px 0 #e1c99e,0 4px 0 #bda079,0 20px 42px rgba(31,19,11,.23)}
+#carta .letter{border-radius:3px;transform:perspective(1100px) rotate(-1deg) rotateY(-2deg)}
+#carta .letter::after{inset:12px;border:1px solid rgba(139,102,58,.32)}
+#carta .letter h3,#carta .letter p,#carta .letter .signature{position:relative;z-index:1}
+.materials .paper-stage{border-radius:3px;transform-style:preserve-3d}
+.materials .mat{filter:drop-shadow(0 15px 18px rgba(39,24,12,.12))}
+.materials .paper-preview,.materials .cert-preview{display:block;width:100%;height:auto;filter:sepia(.055) contrast(1.025)}
+.materials .notebook-stage{filter:drop-shadow(0 18px 16px rgba(37,24,12,.22))}
+.materials .notebook-stage img{box-shadow:0 2px 0 #e9d9b8,0 4px 0 #baa383,0 8px 18px #0003}
+@media(max-width:700px){#carta .letter{transform:none}.materials .mat{filter:none}.materials .paper-stage{box-shadow:0 2px 0 #e1c99e,0 4px 0 #bda079,0 14px 26px rgba(31,19,11,.18)}}
+@media(prefers-reduced-motion:reduce){#carta .letter{transform:none!important}}

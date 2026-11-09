@@ -1,0 +1,19 @@
+/* Etapa 5: acessibilidade e estabilidade, preservando a identidade */
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #f6cf85!important;outline-offset:3px!important}
+:where(.btn,.chip,.play,.audio):focus-visible{box-shadow:0 0 0 5px rgba(28,45,52,.8)!important}
+img,video{max-width:100%}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}#nm-hero-snow,.nm2-snow,.snow{display:none!important}}
+html.nm-low-power #nm-hero-snow,html.nm-low-power .nm2-snow,html.nm-low-power .snow{display:none!important}
+html.nm-low-power .nm-hero-pines,html.nm-low-power .nm-hero-noel{transform:none!important}
+
+/* Etapa 6: estabilidade mobile e áreas interativas */
+#topo,#pacotes,#personalizar{scroll-margin-top:clamp(72px,11svh,110px)}
+#pacotes .offer-cards{min-width:0}
+#pacotes .offer-card{min-width:0}
+#form input,#form textarea,#form select{font-size:max(16px,1rem)}
+#form button,#pacotes .btn{touch-action:manipulation}
+@media(max-width:700px){
+ .nm-mobile-cta{bottom:max(10px,env(safe-area-inset-bottom))}
+ html.nm-hide-sticky .nm-mobile-cta{transform:translate3d(0,160%,0)!important;pointer-events:none!important}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}

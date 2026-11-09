@@ -1,0 +1,2 @@
+/* QA iPhone: CTA discreto, sem cobrir cenas ou formulário */
+(()=>{'use strict';const html=document.documentElement;const sections=['#nm2-story','#personalizar','#pacotes'].map(s=>document.querySelector(s)).filter(Boolean);if(!sections.length)return;const active=new Set();const observer=new IntersectionObserver(entries=>{for(const e of entries){if(e.isIntersecting)active.add(e.target);else active.delete(e.target)}html.classList.toggle('nm-hide-sticky',active.size>0)},{threshold:0,rootMargin:'-15% 0px -18% 0px'});sections.forEach(s=>observer.observe(s));})();

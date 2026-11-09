@@ -1,0 +1,65 @@
+/* Natal Mágico — acabamento premium, sem alterar fluxo de compra. */
+:root{--nm-cream:#fff7e9;--nm-gold:#e8c894;--nm-wine:#a62d30}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{overflow-x:clip}
+.top{backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);background:rgba(5,19,28,.92);border-bottom:1px solid rgba(231,199,151,.12)}
+.top .brand{letter-spacing:-.04em}
+.top .links>a:not(.btn){opacity:.86;transition:opacity .2s,color .2s}
+.top .links>a:not(.btn):hover{opacity:1;color:#f6d7a4}
+.top .btn{box-shadow:0 6px 22px rgba(230,190,132,.12)}
+
+
+
+
+.scroll-journey .hero-live{opacity:1!important;visibility:visible!important;transform:none!important}
+
+.hero-content{box-sizing:border-box;padding:clamp(120px,13vh,165px) clamp(20px,6vw,90px) 100px!important}
+.hero-copy{max-width:640px}
+.hero-content h1{font-size:clamp(40px,5vw,72px)!important;line-height:1.06!important;letter-spacing:-.055em!important;text-wrap:balance}
+.hero-copy>p:not(.hero-brief){font-size:clamp(15px,1.6vw,18px);line-height:1.5}
+.hero-copy .hero-brief{font-size:clamp(14px,1.35vw,16px);line-height:1.6}
+.hero-copy .hero-brief strong{color:#f5d5a2;font-weight:800}
+.hero-copy .hero-shortcuts{display:flex;gap:12px;flex-wrap:wrap}
+.hero-copy .hero-shortcuts a{min-height:49px;padding:12px 20px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;transition:transform .22s,box-shadow .22s}
+.hero-copy .hero-shortcuts a:last-child{background:linear-gradient(125deg,#c6443b,#8f222a);color:white!important;box-shadow:0 12px 30px rgba(106,20,28,.3)}
+.hero-copy .hero-shortcuts a:first-child{background:rgba(8,25,34,.55);border:1px solid rgba(244,217,171,.4);color:#fdf3e4}
+.hero-copy .hero-shortcuts a:hover{transform:translateY(-2px)}
+.hero-live{filter:drop-shadow(0 18px 34px rgba(0,0,0,.18))}
+#kit .content,#pacotes .content,#personalizar.content{padding-top:clamp(48px,6vw,78px)!important;padding-bottom:clamp(48px,6vw,78px)!important}
+#kit .center h2,#pacotes h2,#personalizar h2{letter-spacing:-.04em;line-height:1.1;text-wrap:balance}
+#kit .materials{gap:clamp(12px,2vw,24px)}
+#kit .mat{overflow:hidden;border-radius:18px;box-shadow:0 14px 38px rgba(39,24,15,.08);transition:transform .25s,box-shadow .25s}
+@media(hover:hover){#kit .mat:hover{transform:translateY(-4px);box-shadow:0 20px 42px rgba(39,24,15,.13)}}
+#pacotes .offer-cards{display:flex;justify-content:center}
+#pacotes .offer-card-paper{width:min(100%,580px);max-width:580px;border-radius:22px;box-shadow:0 18px 55px rgba(45,24,15,.12)}
+#pacotes .offer-price strong{font-variant-numeric:tabular-nums}
+#pacotes .offer-benefits li{padding-block:9px}
+#personalizar .formwrap{border-radius:22px;overflow:hidden;box-shadow:0 20px 60px rgba(11,24,27,.13)}
+#personalizar input,#personalizar textarea,#personalizar select{font-size:16px;max-width:100%}
+#personalizar input:focus-visible,#personalizar textarea:focus-visible,#personalizar select:focus-visible{outline:2px solid #b9864c;outline-offset:2px}
+#duvidas.content{padding-block:38px 55px!important}
+#duvidas .faq details{padding-block:13px}
+.future-video,.video-note,.compare-details,.moment-strip,.trust,#video.future-video,#como{display:none!important}
+.elf-guide,.guide-spotlight{display:none!important}
+.nm-gift-reveal .nm-gift-copy{backdrop-filter:none!important}
+.nm-gift-reveal .nm-gift-copy h2{text-wrap:balance}
+@media(max-width:700px){
+ .top{min-height:62px}
+ .top .links>a:not(.btn){display:none}
+ .top .btn{padding:9px 13px;font-size:12px}
+ .scroll-journey>.hero{min-height:100svh!important}
+ .hero-content{padding:105px 18px 75px!important}
+ .hero-content h1{font-size:clamp(31px,8vw,43px)!important;line-height:1.09!important}
+ .hero-copy .hero-brief{font-size:14px}
+ .hero-copy .hero-shortcuts{gap:8px;width:100%}
+ .hero-copy .hero-shortcuts a:last-child{order:-1;width:100%;min-height:52px;font-size:15px;font-weight:750}
+ .hero-copy .hero-shortcuts a:first-child{width:100%;background:transparent;border:0;box-shadow:none;text-decoration:underline;text-underline-offset:4px}
+ .hero-live{max-width:100%}
+ #kit .content,#pacotes .content,#personalizar.content{padding-top:36px!important;padding-bottom:40px!important}
+ #kit .center h2,#pacotes h2,#personalizar h2{font-size:clamp(27px,7vw,36px)}
+ #kit .materials{gap:12px}
+ #pacotes .offer-card-paper{width:100%}
+ #personalizar .formwrap{border-radius:15px}
+ .nm-gift-reveal .nm-gift-stage{min-height:730px;padding-top:300px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-copy .hero-shortcuts a,#kit .mat{transition:none}}

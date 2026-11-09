@@ -1,0 +1,57 @@
+/* Hero cinema — isolated from original scroll-letter sequence. */
+#topo{isolation:isolate}
+#topo .nm-hero-foreground{position:absolute;inset:0;z-index:2;overflow:hidden;pointer-events:none}
+#topo .nm-hero-pines{position:absolute;inset:0;background:url('../images/oficina-natal.webp') center/cover no-repeat;opacity:.22;transform:scale(1.18);mask-image:linear-gradient(90deg,#000 0%,transparent 30%,transparent 75%,#000 100%);-webkit-mask-image:linear-gradient(90deg,#000 0%,transparent 30%,transparent 75%,#000 100%);will-change:transform,opacity}
+#topo .nm-hero-noel{position:absolute;right:-8%;bottom:-9%;height:56%;width:auto;max-width:48%;object-fit:contain;object-position:bottom right;opacity:0;transform:translate3d(8%,12%,0) scale(.94);will-change:transform,opacity;filter:drop-shadow(0 12px 25px rgba(0,0,0,.38))}
+#topo .nm-hero-intro-veil{position:absolute;inset:0;z-index:7;pointer-events:none;background:#020c17;opacity:0}
+#topo .hero-content{z-index:8}
+#topo .nm-hero-title .nm-title-line{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+#topo .nm-hero-title .nm-title-line>span{display:block;transform:translate3d(0,0,0);opacity:1;will-change:transform,opacity}
+#topo .hero-shortcuts a[href="#personalizar"]{position:relative;overflow:hidden;isolation:isolate}
+#topo .hero-shortcuts a[href="#personalizar"]::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 20%,rgba(255,235,184,.2) 48%,transparent 75%);transform:translateX(-125%);transition:transform .85s ease;pointer-events:none}
+#topo .hero-shortcuts a[href="#personalizar"]:hover::after{transform:translateX(125%)}
+.nm-mobile-cta{display:none}
+@media(max-width:700px){
+ #topo .nm-hero-noel{height:38%;max-width:40%;right:-12%;bottom:0;opacity:0}
+ #topo .nm-hero-pines{opacity:.15}
+ .nm-mobile-cta{position:fixed;left:14px;right:14px;bottom:max(12px,env(safe-area-inset-bottom));z-index:900;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 20px;border:1px solid rgba(255,228,182,.35);border-radius:14px;background:rgba(115,25,35,.96);box-shadow:0 8px 28px rgba(0,0,0,.3);color:#fff7ed;text-decoration:none;font-weight:700;transform:translate3d(0,150%,0);transition:transform .35s ease;backdrop-filter:blur(8px)}
+ .nm-mobile-cta.is-visible{transform:translate3d(0,0,0)}
+}
+@media(prefers-reduced-motion:reduce){
+ #topo .nm-hero-intro-veil{display:none!important}
+ #topo .nm-hero-title .nm-title-line>span{transform:none!important;opacity:1!important}
+ #topo .nm-hero-noel{display:none!important}
+ .nm-mobile-cta{transition:none!important}
+}
+
+#nm-hero-snow{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+
+/* Refined mobile art direction: preserve readable headline and original workshop. */
+#topo .nm-hero-pines{background-image:url('../images/oficina-natal.webp');opacity:.1;filter:brightness(.48) saturate(.75)}
+#topo .nm-hero-noel{mix-blend-mode:normal}
+#topo .nm-hero-intro-veil{opacity:0}
+#topo .nm-hero-title{font-kerning:normal;text-wrap:balance;line-height:1.12}
+#topo .nm-title-line>span{text-wrap:balance}
+.nm-mobile-cta:focus-visible{outline:3px solid #f6d7a0;outline-offset:3px}
+@media(max-width:700px){
+ #topo .nm-hero-pines{opacity:.08}
+ #topo .nm-hero-noel{right:-7%;bottom:1%;height:32%;max-width:36%}
+ #topo .hero-copy{position:relative;z-index:9}
+ #topo .hero-brief{position:relative;z-index:9}
+ .nm-mobile-cta{padding:14px 18px;min-height:52px}
+}
+@media(prefers-reduced-motion:reduce){#topo .nm-hero-pines{transform:none!important}}
+
+/* Etapa 2: acabamento da entrada — sem deslocar o texto do hero */
+#topo .nm-hero-intro-veil{background:linear-gradient(180deg,rgba(2,12,23,.88),rgba(2,12,23,.42));will-change:opacity}
+#topo .nm-hero-title{max-width:100%;overflow-wrap:normal}
+#topo .nm-title-line{max-width:100%}
+#topo .nm-title-line>span{will-change:auto}
+@media(max-width:700px){
+ #topo .nm-hero-foreground{overflow:clip}
+ #topo .nm-hero-pines{mask-image:linear-gradient(90deg,#000 0%,transparent 26%,transparent 76%,#000 100%);-webkit-mask-image:linear-gradient(90deg,#000 0%,transparent 26%,transparent 76%,#000 100%)}
+ #topo .nm-hero-noel{max-width:30%;right:-3%;bottom:4%;filter:none}
+ #topo .nm-hero-title .nm-title-line>span{white-space:normal;overflow-wrap:break-word}
+}
+@media(prefers-reduced-motion:reduce){#topo .nm-hero-intro-veil,#nm-hero-snow{display:none!important}#topo .nm-hero-title .nm-title-line>span{will-change:auto!important}}
+html.nm-low-power #nm-hero-snow{display:none!important}

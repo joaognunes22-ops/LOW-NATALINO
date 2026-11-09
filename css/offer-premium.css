@@ -1,0 +1,62 @@
+/* ETAPA 3 — Oferta premium. Somente estilos da seção #pacotes. */
+#pacotes{--offer-wine:#4b1526;--offer-gold:#e6bf81;--offer-cream:#fff8ed}
+#pacotes .offer-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2.6vw,28px);align-items:stretch;max-width:1100px;margin-inline:auto;perspective:1200px}
+#pacotes .offer-card{position:relative;isolation:isolate;overflow:hidden;border-radius:24px;border:1px solid rgba(151,104,65,.28);padding:clamp(23px,3vw,38px);text-align:left;box-shadow:0 20px 60px rgba(25,19,25,.13);transition:transform .25s ease,box-shadow .25s ease;transform-style:preserve-3d}
+#pacotes .offer-card-paper{background:linear-gradient(145deg,#5d1b30,#300e1f);color:var(--offer-cream);border-color:rgba(230,191,129,.65);box-shadow:0 22px 65px rgba(62,16,32,.25)}
+#pacotes .offer-card-video{background:linear-gradient(155deg,#f9f1e3,#f0e3d0);color:#3b2931}
+#pacotes .offer-card::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;background:radial-gradient(350px circle at var(--glow-x,50%) var(--glow-y,0%),rgba(255,218,153,.18),transparent 70%);transition:opacity .25s ease}
+#pacotes .offer-card:hover::before,#pacotes .offer-card:focus-within::before{opacity:1}
+#pacotes .nm3-badge{display:inline-flex;align-items:center;gap:7px;border-radius:100px;padding:7px 12px;margin-bottom:16px;border:1px solid rgba(230,191,129,.55);background:rgba(230,191,129,.13);color:#f6dba7;font-size:.72rem;font-weight:700;letter-spacing:.045em;text-transform:uppercase}
+#pacotes .offer-card-video .nm3-badge{color:#7a4832;border-color:#b58a63;background:#ead9c1}
+#pacotes .offer-card h3{font-size:clamp(1.5rem,2.4vw,2.2rem);line-height:1.15}
+#pacotes .offer-card-paper .offer-price strong{color:#ffe1a4}
+#pacotes .offer-card-paper .offer-price small,#pacotes .offer-card-paper .offer-price span{color:#f1d6c7}
+#pacotes .offer-benefits{padding:0;list-style:none}
+#pacotes .offer-benefits li{display:flex;gap:13px;align-items:flex-start;margin:14px 0}
+#pacotes .offer-benefits li>span{display:grid;place-items:center;flex:0 0 30px;height:30px;border-radius:10px;background:rgba(232,191,126,.14);color:#f4ce92;font-size:1rem}
+#pacotes .offer-benefits li strong{display:block}
+#pacotes .offer-benefits li small{display:block;margin-top:3px;line-height:1.4}
+#pacotes .offer-card-video .offer-benefits li>span{background:#ead9c1;color:#79432c}
+#pacotes .offer-card .btn{position:relative;overflow:hidden;display:flex;justify-content:center;align-items:center;min-height:52px;border-radius:12px;text-align:center;isolation:isolate;transition:transform .2s ease,box-shadow .2s ease}
+#pacotes .offer-card-paper .btn{background:#f2cf90;color:#401729;box-shadow:0 8px 24px rgba(230,191,129,.2)}
+#pacotes .offer-card .btn::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-130%);animation:nm3-shine 5s ease-in-out infinite}
+#pacotes .offer-card .btn:hover{transform:translateY(-2px)}
+#pacotes .offer-card .btn:focus-visible{outline:3px solid #e4ac5d;outline-offset:4px}
+#pacotes .nm3-trust{max-width:1100px;margin:24px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;color:#4a3a37}
+#pacotes .nm3-trust span{display:inline-flex;gap:8px;align-items:center;border:1px solid #dbc9b5;background:#fff9f1;padding:10px 14px;border-radius:100px;font-size:.82rem}
+#pacotes .nm3-guarantee{max-width:900px;margin:14px auto 0;font-size:.82rem;color:#69584d;text-align:center}
+#pacotes .nm3-pending{font-size:.75rem;font-weight:700;letter-spacing:.04em;color:#8b4a27}
+@keyframes nm3-shine{0%,70%,100%{transform:translateX(-130%)}85%{transform:translateX(130%)}}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){#pacotes .offer-card[data-nm3-tilt]{will-change:transform}}
+@media(max-width:760px){#pacotes .offer-cards{grid-template-columns:1fr;max-width:540px}#pacotes .offer-card{padding:23px;border-radius:19px;transform:none!important}#pacotes .nm3-trust{gap:8px}#pacotes .nm3-trust span{font-size:.73rem}}
+@media(prefers-reduced-motion:reduce){#pacotes .offer-card,#pacotes .offer-card .btn{transition:none!important;transform:none!important}#pacotes .offer-card .btn::after{animation:none!important;display:none}}
+
+/* Etapa 4 — contraste AA visual, hierarquia e acabamento sem trocar conteúdo */
+#pacotes .offer-card-paper{color:#fff5e9;background:linear-gradient(155deg,#642238 0%,#461528 56%,#300e1e 100%)}
+#pacotes .offer-card-paper h3,#pacotes .offer-card-paper p,#pacotes .offer-card-paper li,#pacotes .offer-card-paper li strong,#pacotes .offer-card-paper li small,#pacotes .offer-card-paper .offer-eyebrow{color:#fff5e9!important;opacity:1!important;text-shadow:none!important}
+#pacotes .offer-card-paper .offer-benefits li small{color:#f5ddcc!important}
+#pacotes .offer-card-paper .offer-price{background:#fff0d2!important;border:1px solid #d4a45f!important;box-shadow:inset 0 1px 0 #fff9ed,0 10px 25px rgba(0,0,0,.14)}
+#pacotes .offer-card-paper .offer-price strong{color:#63251f!important;text-shadow:none!important;opacity:1!important}
+#pacotes .offer-card-paper .offer-price small,#pacotes .offer-card-paper .offer-price span,#pacotes .offer-card-paper .offer-price p{color:#60372b!important;opacity:1!important}
+#pacotes .offer-card-paper .nm3-badge{color:#ffe5b4!important;border-color:#e6bf81!important}
+#pacotes .offer-card-paper .offer-benefits li>span{color:#ffe0a4!important}
+#pacotes .offer-card-video h3,#pacotes .offer-card-video p,#pacotes .offer-card-video li,#pacotes .offer-card-video li strong,#pacotes .offer-card-video li small{color:#38252b!important;opacity:1!important}
+#pacotes .offer-card-video .offer-price strong{color:#5b2930!important}
+#pacotes .offer-card-video .offer-price small,#pacotes .offer-card-video .offer-price span{color:#704b43!important}
+#pacotes .offer-card-video .btn:disabled{opacity:1!important;cursor:not-allowed!important;color:#674e42!important;background:#e4d5c0!important;border:1px solid #c6ac8d!important;box-shadow:none!important;transform:none!important}
+#pacotes .offer-card-video .btn:disabled::after{display:none!important}
+#pacotes .offer-card-paper .btn{font-weight:750;letter-spacing:.01em}
+#pacotes .offer-card-paper .btn:active{transform:scale(.985)}
+#pacotes .offer-card:focus-within{outline:2px solid #e4ac5d;outline-offset:3px}
+#pacotes .offer-card .offer-benefits li div{min-width:0}
+#pacotes .offer-card .offer-benefits li strong,#pacotes .offer-card .offer-benefits li small{overflow-wrap:anywhere}
+#pacotes .offer-card::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
+#pacotes .nm3-guarantee{display:none}
+@media(max-width:760px){
+ #pacotes .offer-card{padding:clamp(20px,5vw,27px)!important}
+ #pacotes .offer-card h3{font-size:clamp(1.5rem,6.3vw,2rem)}
+ #pacotes .offer-card .offer-price strong{font-size:clamp(2.6rem,12vw,4.3rem);line-height:1.08}
+ #pacotes .offer-card .btn{width:100%;box-sizing:border-box}
+ #pacotes .offer-card .offer-benefits li{margin:12px 0}
+}
+@media(prefers-reduced-motion:reduce){#pacotes .offer-card .btn::after{display:none!important}}
