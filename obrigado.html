@@ -38,6 +38,8 @@
   .ob-photo h2{margin-top:0}
   .ob-file{position:relative;overflow:hidden}
   .ob-file input{position:absolute;inset:0;opacity:0;cursor:pointer}
+  .ob-list{margin:0 0 14px;padding-left:20px;line-height:1.5}
+  .ob-list li{margin-bottom:6px}
   .ob-small{font-size:13px;color:#5b6870;margin-top:14px}
   .ob-edit{background:none;border:0;color:#a3302a;text-decoration:underline;font:inherit;font-size:14px;cursor:pointer;padding:0;margin-top:10px}
   .ob-error{color:#a3302a;font-size:14px;margin-top:10px}
@@ -50,7 +52,8 @@
   <section class="ob-card" aria-labelledby="ob-title">
     <p class="ob-kicker">Pagamento recebido</p>
     <h1 id="ob-title">A Prova Mágica do Polo Norte está pronta!</h1>
-    <p>O Papai Noel já registrou o nome no Livro da Lista dos Bonzinhos. Baixe agora a <strong>carta</strong>, o <strong>certificado com o código mágico</strong> e os <strong>bilhetes da rena</strong>. O caderno de atividades chega pela Cakto, no seu e-mail.</p>
+    <p>O Papai Noel já registrou o nome no Livro da Lista dos Bonzinhos. Baixe agora os 2 arquivos do kit, já com os dados da criança:</p>
+    <ul class="ob-list"><li><strong>Prova Mágica:</strong> carta, certificado com o código mágico, bilhetes da rena e guia dos pais.</li><li><strong>Meu Livrinho Mágico de Natal:</strong> 29 páginas com o nome da criança.</li></ul>
 
     <form class="ob-form" id="ob-form" hidden novalidate>
       <h2>Confira os dados da criança</h2>
@@ -76,24 +79,27 @@
 
     <div id="ob-ready" hidden>
       <div class="ob-preview" id="ob-preview" aria-label="Prévia do kit"></div>
-      <button type="button" class="ob-btn" id="ob-download">Baixar meu kit mágico (PDF)</button>
+      <button type="button" class="ob-btn" id="ob-download">Baixar a Prova Mágica (PDF)</button>
+      <button type="button" class="ob-btn gold" id="ob-livrinho">Baixar o Livrinho Mágico · 29 páginas (PDF)</button>
+      <p class="ob-small" id="ob-livrinho-status" role="status"></p>
       <a class="ob-link" id="ob-lista" href="lista.html" target="_blank" rel="noopener">Ver a página secreta do Livro do Polo Norte →</a>
       <button type="button" class="ob-edit" id="ob-edit">Corrigir dados</button>
 
       <h2>Como fazer a magia acontecer</h2>
       <ol class="ob-steps">
-        <li>Imprima o PDF em folha A4 (de preferência papel mais grosso).</li>
+        <li>Imprima os PDFs em folha A4 (a carta e o certificado ficam mais bonitos em papel mais grosso).</li>
         <li>Deixe a carta, o certificado e o bilhete da rena em um lugar especial, como embaixo da árvore.</li>
         <li>Quando a criança perguntar se é de verdade, aponte a câmera do celular para o código dourado do certificado. O nome dela aparece no Livro do Polo Norte!</li>
       </ol>
       <p class="ob-small">Precisa de ajuda? Suporte somente pelo <a href="https://wa.me/5515997663247" target="_blank" rel="noopener">WhatsApp (15) 99766-3247</a>.</p>
-      <p class="ob-small">Dica: guarde este PDF. Você pode baixar de novo por esta página, neste mesmo navegador.</p>
+      <p class="ob-small">Dica: guarde os PDFs. Você pode baixar de novo por esta página, neste mesmo navegador.</p>
     </div>
   </section>
 </main>
 <script src="js/vendor/qrcode.js" defer></script>
 <script src="js/vendor/jspdf.umd.min.js" defer></script>
 <script src="js/kit-magico.js" defer></script>
+<script src="js/livrinho.js" defer></script>
 <script src="js/obrigado.js" defer></script>
 </body>
 </html>

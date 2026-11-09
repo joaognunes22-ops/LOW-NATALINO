@@ -16,9 +16,9 @@
   // LINK DE CHECKOUT: cole aqui o seu link de pagamento (ex.: 'https://...').
   // Enquanto estiver vazio, o botão de pagamento mostra uma mensagem de aviso.
   NM.config.checkoutUrl = NM.config.checkoutUrl || 'https://pay.cakto.com.br/sep2jqf_1273980';
-  // LINK DO KIT COM FOTO (R$ 29,90): crie uma segunda oferta na Cakto e cole o link aqui.
+  // LINK DO KIT COM FOTO (R$ 24,90).
   // Página de obrigado dessa oferta: https://SEU-SITE/obrigado.html?foto=1
-  NM.config.checkoutUrlFoto = NM.config.checkoutUrlFoto || '';
+  NM.config.checkoutUrlFoto = NM.config.checkoutUrlFoto || 'https://pay.cakto.com.br/35xqxz7_1290406';
   NM.config.createCheckout = async function (comFoto) {
     var url = comFoto ? NM.config.checkoutUrlFoto : NM.config.checkoutUrl;
     var checkout;
@@ -155,7 +155,7 @@
   selectChip('nome');
 
   /* ---------- Formulário em 3 etapas ---------- */
-  var PRICE = { kit: 1490, foto: 2990, extra: 990 };
+  var PRICE = { kit: 990, foto: 2490, extra: 990 };
   var money = function (c) { if (c === null) return 'Valor no checkout'; return (c / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); };
   var form = $('#form'), panels = $$('[data-panel]'), stepperItems = $$('#stepper li'),
       back = $('#back'), next = $('#next'), result = $('#result'), step = 1, started = false;
@@ -372,7 +372,7 @@
     inicio: ['Duende da oficina', 'Uma surpresa especial está chegando. Venha conhecer!'],
     carta: ['Papai Noel', 'Uma carta com o nome e a história da criança.'],
     kit: ['Duende da oficina', 'Tem certificado, desenhos e outras surpresas!'],
-    pacotes: ['Duende da oficina', 'Escolha seu kit: a partir de R$ 14,90.']
+    pacotes: ['Duende da oficina', 'Escolha seu kit: a partir de R$ 9,90.']
   };
   var highlights = [{id:'carta', selector:'.letter'}, {id:'kit', selector:'#kit .materials figure'}, {id:'preco-kit', selector:'.offer-card-paper .offer-price'}, {id:'vantagens-kit', selector:'.offer-card-paper ul'}];
   function positionSpot() {

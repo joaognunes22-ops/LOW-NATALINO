@@ -191,6 +191,7 @@
     doc.addImage(pages.certificado.toDataURL('image/jpeg', 0.9), 'JPEG', 0, 0, 297, 210);
     doc.addPage('a4', 'portrait');
     doc.addImage(pages.bilhetes.toDataURL('image/jpeg', 0.9), 'JPEG', 0, 0, 210, 297);
+    (pages.guia || []).forEach(function (c) { doc.addPage('a4', 'portrait'); doc.addImage(c.toDataURL('image/jpeg', 0.85), 'JPEG', 0, 0, 210, 297); });
     doc.setProperties({ title: 'Prova Mágica do Polo Norte - ' + d.child });
     var nome = d.child.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'crianca';
     doc.save('Prova-Magica-' + nome + '.pdf');
@@ -212,5 +213,6 @@
     });
   }
 
-  window.KitMagico = { prepararFoto: prepararFoto, gerar: gerar, pdf: pdf, registro: registro, listaUrl: listaUrl, lerLista: lerLista, normDeed: normDeed, firstUpper: firstUpper, ANO: ANO };
+  window.KitMagico = { _h: { loadImage: loadImage, fontsReady: fontsReady, wrap: wrap, fitBlocks: fitBlocks, spaced: spaced, photoFrame: photoFrame, HAND: HAND, TITLE: TITLE, INK: INK, RED: RED, GOLD: GOLD },
+    prepararFoto: prepararFoto, gerar: gerar, pdf: pdf, registro: registro, listaUrl: listaUrl, lerLista: lerLista, normDeed: normDeed, firstUpper: firstUpper, ANO: ANO };
 })();

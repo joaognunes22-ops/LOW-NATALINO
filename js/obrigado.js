@@ -33,6 +33,7 @@
     if (!data.registro) { data.registro = KitMagico.registro(); save(); }
     try {
       pages = await KitMagico.gerar(Object.assign({}, data, { photo: comFoto ? photo : null }));
+      pages.guia = Livrinho.guia(data);
       var pv = $('ob-preview'); pv.replaceChildren();
       [['carta', 'Carta do Papai Noel'], ['certificado', 'Certificado com código mágico'], ['bilhetes', 'Bilhetes da rena']].forEach(function (p) {
         var src = pages[p[0]], t = document.createElement('canvas'), w = 600;
@@ -42,7 +43,7 @@
         pv.append(img);
       });
       $('ob-lista').href = KitMagico.listaUrl(data);
-      dl.disabled = false; dl.textContent = 'Baixar meu kit mágico (PDF)';
+      dl.disabled = false; dl.textContent = 'Baixar a Prova Mágica (PDF)';
     } catch (e) {
       dl.disabled = false; dl.textContent = 'Tentar novamente';
       console.error(e);
@@ -52,6 +53,18 @@
   dl.addEventListener('click', function () {
     if (!pages) { build(); return; }
     try { KitMagico.pdf(pages, data); } catch (e) { console.error(e); alert('Não foi possível gerar o PDF. Tente novamente.'); }
+  });
+
+  var lv = $('ob-livrinho'), lvs = $('ob-livrinho-status');
+  lv.addEventListener('click', async function () {
+    if (!complete(data)) return;
+    if (!data.registro) { data.registro = KitMagico.registro(); save(); }
+    lv.disabled = true;
+    try {
+      await Livrinho.gerar(Object.assign({}, data, { photo: comFoto ? photo : null }), function (i, n) { lvs.textContent = 'Montando a página ' + i + ' de ' + n + '…'; });
+      lvs.textContent = 'Pronto! O Livrinho foi baixado.';
+    } catch (e) { console.error(e); lvs.textContent = 'Não foi possível gerar o Livrinho. Tente novamente.'; }
+    lv.disabled = false;
   });
 
   form.addEventListener('submit', function (e) {

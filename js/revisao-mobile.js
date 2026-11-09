@@ -9,10 +9,10 @@ var review=document.querySelector('[data-panel="3"]');
 if(!toggle||!total||!row||!next||!review)return;
 var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var money=function(v){return (v/100).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});};
-var current=1490,raf=0;
+var current=990,raf=0;
 function paint(value){total.textContent=money(value);}
 function update(){
- var on=toggle.checked,target=on?2990:1490;
+ var on=toggle.checked,target=on?2490:990;
  row.hidden=!on;
  var card=toggle.closest('.nm-photo-choice');if(card)card.setAttribute('data-selected',String(on));
  if(raf)cancelAnimationFrame(raf);
