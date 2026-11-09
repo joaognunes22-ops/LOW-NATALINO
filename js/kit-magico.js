@@ -199,16 +199,25 @@
 
   /* Recorta a foto escolhida em quadrado (levemente acima do centro, onde costuma estar o rosto). */
   function prepararFoto(file) {
+    function recortar(src, w, h) {
+      var s = Math.min(w, h), sx = (w - s) / 2, sy = Math.max(0, Math.min(h - s, (h - s) * 0.3));
+      var c = document.createElement('canvas'); c.width = c.height = 520;
+      c.getContext('2d').drawImage(src, sx, sy, s, s, 0, 0, 520, 520);
+      return c.toDataURL('image/jpeg', 0.85);
+    }
     return new Promise(function (ok, fail) {
       var url = URL.createObjectURL(file), i = new Image();
       i.onload = function () {
-        var s = Math.min(i.naturalWidth, i.naturalHeight), sx = (i.naturalWidth - s) / 2;
-        var sy = Math.max(0, Math.min(i.naturalHeight - s, (i.naturalHeight - s) * 0.3));
-        var c = document.createElement('canvas'); c.width = c.height = 520;
-        c.getContext('2d').drawImage(i, sx, sy, s, s, 0, 0, 520, 520);
-        URL.revokeObjectURL(url); ok(c.toDataURL('image/jpeg', 0.85));
+        try { var out = recortar(i, i.naturalWidth, i.naturalHeight); URL.revokeObjectURL(url); ok(out); }
+        catch (e) { URL.revokeObjectURL(url); fail(e); }
       };
-      i.onerror = function () { URL.revokeObjectURL(url); fail(new Error('Não foi possível abrir esta foto.')); };
+      i.onerror = function () {
+        URL.revokeObjectURL(url);
+        // Segunda tentativa: alguns celulares abrem a foto por aqui mesmo quando a <img> falha.
+        if (!window.createImageBitmap) return fail(new Error('Não foi possível abrir esta foto.'));
+        createImageBitmap(file).then(function (bmp) { ok(recortar(bmp, bmp.width, bmp.height)); })
+          .catch(function () { fail(new Error('Não foi possível abrir esta foto.')); });
+      };
       i.src = url;
     });
   }

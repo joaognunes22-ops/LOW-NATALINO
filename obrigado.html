@@ -36,6 +36,10 @@
   .ob-preview img.wide{grid-column:1 / -1}
   .ob-photo{margin:6px 0 18px;padding:16px;border:1px dashed #cdbf9f;border-radius:10px;background:#fff}
   .ob-photo h2{margin-top:0}
+  .ob-photo-ok{display:flex;align-items:center;gap:14px;margin:4px 0 4px}
+  .ob-photo-ok img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:4px solid #c9a55c;flex:none}
+  .ob-photo-ok strong{display:block;color:#1f7a3f;font-size:17px}
+  .ob-photo-ok span{font-size:14px;color:#5b6870}
   .ob-file{position:relative;overflow:hidden}
   .ob-file input{position:absolute;inset:0;opacity:0;cursor:pointer}
   .ob-list{margin:0 0 14px;padding-left:20px;line-height:1.5}
@@ -73,9 +77,15 @@
     <div class="ob-photo" id="ob-photo" hidden>
       <h2>Foto da criança</h2>
       <p>Escolha uma foto nítida do rosto. Ela entra na carta e no certificado na hora e fica só no seu aparelho.</p>
-      <label class="ob-btn gold ob-file"><input type="file" id="f-photo" accept="image/*">Escolher foto</label>
-      <p class="ob-error" id="ob-photo-error" hidden></p>
+      <div class="ob-photo-ok" id="ob-photo-ok" hidden>
+        <img id="ob-photo-img" alt="Foto escolhida" width="96" height="96">
+        <div><strong>Foto adicionada ✓</strong><span>Ela já está na carta, no certificado e na carteirinha de elfo.</span></div>
+      </div>
+      <label class="ob-btn gold ob-file"><input type="file" id="f-photo" accept="image/*"><span id="ob-photo-label">Escolher foto</span></label>
+      <p class="ob-small" id="ob-photo-status" role="status" hidden></p>
+      <p class="ob-error" id="ob-photo-error" role="alert" hidden></p>
     </div>
+    <button type="button" class="ob-edit" id="ob-photo-show" hidden>Comprei o kit com foto: adicionar a foto da criança</button>
 
     <div id="ob-ready" hidden>
       <div class="ob-preview" id="ob-preview" aria-label="Prévia do kit"></div>

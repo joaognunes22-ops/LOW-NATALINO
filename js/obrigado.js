@@ -8,16 +8,37 @@
   try { data = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (_) { data = null; }
   var photo = null;
   try { photo = localStorage.getItem(PHOTO_KEY); } catch (_) {}
-  var comFoto = /[?&]foto=1/.test(location.search) || !!(data && data.foto);
-  if (comFoto) $('ob-photo').hidden = false;
+  // Kit com foto: vem pelo link ?foto=1, pela escolha feita no site ou por uma foto já enviada.
+  var FOTO_FLAG = 'natal-magico-com-foto', flag = null;
+  try { flag = localStorage.getItem(FOTO_FLAG); } catch (_) {}
+  var comFoto = /[?&]foto=1/.test(location.search) || !!(data && data.foto) || flag === '1' || !!photo;
+  function showPhotoBox() {
+    comFoto = true; $('ob-photo').hidden = false; $('ob-photo-show').hidden = true;
+    try { localStorage.setItem(FOTO_FLAG, '1'); } catch (_) {}
+  }
+  function showPhotoPreview() {
+    if (!photo) return;
+    $('ob-photo-img').src = photo; $('ob-photo-ok').hidden = false; $('ob-photo-label').textContent = 'Trocar foto';
+  }
+  if (comFoto) showPhotoBox(); else $('ob-photo-show').hidden = false;
+  showPhotoPreview();
+  $('ob-photo-show').addEventListener('click', function () { showPhotoBox(); $('ob-photo').scrollIntoView({ block: 'center' }); });
   $('f-photo').addEventListener('change', async function (e) {
-    var f = e.target.files && e.target.files[0], pe = $('ob-photo-error'); if (!f) return;
-    pe.hidden = true;
+    var input = e.target, f = input.files && input.files[0], pe = $('ob-photo-error'), ps = $('ob-photo-status'); if (!f) return;
+    pe.hidden = true; ps.textContent = 'Carregando a foto…'; ps.hidden = false;
     try {
       photo = await KitMagico.prepararFoto(f);
       try { localStorage.setItem(PHOTO_KEY, photo); } catch (_) {}
-      pages = null; if (complete(data)) build();
-    } catch (err) { pe.textContent = err.message; pe.hidden = false; }
+      showPhotoPreview();
+      pages = null;
+      if (complete(data)) { ps.textContent = 'Colocando a foto na carta e no certificado…'; await build(); ps.hidden = true; }
+      else { ps.textContent = 'Foto pronta! Agora preencha os dados da criança abaixo.'; }
+    } catch (err) {
+      ps.hidden = true;
+      pe.textContent = 'Não foi possível abrir esta foto. Escolha outra foto em JPG ou PNG (uma dica: tire um print da foto e envie o print).';
+      pe.hidden = false;
+    }
+    input.value = ''; // permite escolher a mesma foto de novo
   });
 
   var form = $('ob-form'), ready = $('ob-ready'), err = $('ob-error'), dl = $('ob-download');
@@ -44,6 +65,7 @@
       });
       $('ob-lista').href = KitMagico.listaUrl(data);
       dl.disabled = false; dl.textContent = 'Baixar a Prova Mágica (PDF)';
+      $('ob-photo-status').hidden = true;
     } catch (e) {
       dl.disabled = false; dl.textContent = 'Tentar novamente';
       console.error(e);
