@@ -290,11 +290,11 @@
       var phoneLabel=document.createElement('label'); phoneLabel.htmlFor='checkout-phone'; phoneLabel.textContent='Celular do responsável (com DDD)';
       var phone=document.createElement('input'); phone.id='checkout-phone'; phone.type='tel'; phone.inputMode='tel'; phone.autocomplete='tel-national'; phone.required=true; phone.maxLength=15; phone.placeholder='(31) 99999-9999'; phone.pattern='\\([0-9]{2}\\) [0-9]{5}-[0-9]{4}';
       phone.addEventListener('input',function(){var d=phone.value.replace(/\D/g,'').slice(0,11);phone.value=d.length>7?'('+d.slice(0,2)+') '+d.slice(2,7)+'-'+d.slice(7):d.length>2?'('+d.slice(0,2)+') '+d.slice(2):d.length?'('+d:'';});
-      var phoneHint=document.createElement('p'); phoneHint.className='small'; phoneHint.textContent='Informe seu número com DDD para contato sobre o pedido. Após a confirmação, acesse os arquivos pela página de entrega.';
+      var phoneHint=document.createElement('p'); phoneHint.className='small'; phoneHint.textContent='Informe seu número com DDD para contato sobre o pedido. Após a confirmação, você recebe o acesso aos arquivos pela Cakto.';
       st.append(phoneLabel,phone,phoneHint);
       var legal=document.createElement('p'); legal.className='small'; legal.innerHTML='Ao continuar, consulte a <a href="/privacidade">Privacidade</a> e os <a href="/termos">Termos de Uso</a>.';st.append(legal);
       btn.textContent = 'Continuar para o pagamento →';
-      msg.textContent = 'Kit ' + money(totalCents()) + '. Confira o valor final na Cakto. Após a confirmação, acesse os PDFs na página de entrega; o link por e-mail ainda não está disponível.';
+      msg.textContent = 'Kit ' + money(totalCents()) + '. Confira o valor final na Cakto. Após a confirmação do pagamento, a Cakto envia o acesso aos PDFs para o seu e-mail.';
       btn.addEventListener('click', async function () {
         if (!email.reportValidity() || !phone.reportValidity()) return;
         btn.disabled = true;
