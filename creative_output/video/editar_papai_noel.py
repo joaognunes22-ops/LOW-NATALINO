@@ -116,7 +116,7 @@ def main():
     for t0, t1, png in ev: overlay(png, t0, t1, sum(FACE_BAND) // 2, FACE_BAND[1] - FACE_BAND[0])
     if preco is not None: overlay('INS_preco.png', preco, min(preco + 3.0, total), 330, 130)
     if cta is not None: overlay('INS_cta_saiba_mais.png', cta, total, 330, 140)
-    fc.append(f"[1:a]aresample=48000,apad=whole_dur={total},atrim=duration={total},alimiter=limit=0.8[a]")
+    fc.append(f"[1:a]aresample=48000,apad=whole_dur={total},atrim=duration={total},alimiter=limit=0.84:level=0[a]")
     sem = f'{a.saida}/PAPAI_NOEL_AD_{ID}_sem_legenda.mp4'; com = f'{a.saida}/PAPAI_NOEL_AD_{ID}.mp4'
     enc = ['-c:v', 'libx264', '-profile:v', 'high', '-crf', '19', '-preset', 'medium', '-pix_fmt', 'yuv420p', '-r', str(FPS),
            '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-movflags', '+faststart', '-t', str(total)]
